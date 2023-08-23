@@ -1,0 +1,27 @@
+.movies__btn {
+    display: block;
+
+    min-width: 240px;
+
+    margin: 63px auto 80px;
+    padding: 11px 20px;
+
+    border: 1px solid #424242;
+    border-radius: 6px;
+    background-color: transparent;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+@media screen and (min-width: 768px) {
+    .movies__btn {
+        min-width: 320px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .movies__btn {
+        margin-top: 78px;
+    }
+}
