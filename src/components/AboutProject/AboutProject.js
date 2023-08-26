@@ -1,7 +1,9 @@
+import Title from "../Title/Title";
+
 const AboutProject = () => {
     return (
-        <section className="project">
-            <h2 className="project__title">О проекте</h2>
+        <section className="project" id="project">
+            <Title name="О проекте" />
             <dl className="project__list">
                 <div>
                     <dt className="project__list-title">Дипломный проект включал 5 этапов</dt>

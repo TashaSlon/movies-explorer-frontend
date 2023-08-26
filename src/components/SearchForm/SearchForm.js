@@ -1,4 +1,8 @@
-const SearchForm = () => {
+const SearchForm = ({cinemaCheckbox, onCheckboxClick}) => {
+    function handleClick() {
+        onCheckboxClick();
+    }
+
     return (
         <section className="search">
             <form className="search__form">
@@ -7,7 +11,7 @@ const SearchForm = () => {
                     <button className="search__btn"></button>
                 </fieldset>
                 <div className="search__short-films">
-                    <div className="search__new-radio"></div>
+                    <div className={cinemaCheckbox ? "search__new-radio" : "search__new-radio search__new-radio_disabled"} onClick={handleClick}></div>
                     <input className="search__input-radio" type="radio" id="short-films" name="short-films" value="short-films" checked />
                     <label for="short-films">Короткометражки</label>
                 </div>

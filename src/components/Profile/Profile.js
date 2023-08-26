@@ -2,6 +2,10 @@ import Header from '../Header/Header';
 
 const Profile = (props) => {
     const {name, email} = props.user;
+
+    function handleEdit() {
+    }
+
     return (
         <>
             <Header signOut={props.signOut}/>
@@ -21,7 +25,7 @@ const Profile = (props) => {
                         </div>
                     </div>
                     <div className="profile__button-group">
-                        <button className="profile__button">Редактировать</button>
+                        <button className="profile__button" onClick={handleEdit}>Редактировать</button>
                         <button className="profile__button profile__button-accent">Выйти из аккаунта</button>
                     </div>
                 </section>

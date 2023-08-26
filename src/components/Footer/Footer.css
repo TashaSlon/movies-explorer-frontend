@@ -1,5 +1,7 @@
 .footer {
+    max-width: 1140px;
 
+    margin: 0 auto;
     padding: 79px 10px 20px;
 
     text-align: center;
@@ -13,6 +15,7 @@
     border-bottom: 1px solid #424242;
 
     color: #8B8B8B;
+    font-weight: 400;
 }
 
 .footer__block {

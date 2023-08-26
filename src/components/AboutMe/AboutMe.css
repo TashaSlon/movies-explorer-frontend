@@ -1,19 +1,8 @@
 .about-me {
-    max-width: 1200px;
+    max-width: 1140px;
 
     margin: 0 auto;
     padding: 70px 14px;
-}
-
-.about-me__title {
-    margin: 0;
-    padding-bottom: 28px;
-
-    font-size: 18px;
-    font-weight: 400;
-    letter-spacing: -0.72px;
-
-    border-bottom: 1px solid #DADADA;
 }
 
 .about-me__block {
@@ -56,27 +45,9 @@
     padding-top: 20px;
 }
 
-.about-me__link {
-    display: block;
-
-    padding-top: 40px;
-
-    color: #FFF;
-    font-size: 14px;
-    font-weight: 500;
-    text-decoration: none;
-}
-
 @media screen and (min-width: 768px) {
     .about-me {
         padding: 90px 50px;
-    }
-
-    .about-me__title {
-        padding-bottom: 23px;
-
-        font-size: 22px;
-        letter-spacing: -0.88px;
     }
 
     .about-me__block {
@@ -112,11 +83,6 @@
 @media screen and (min-width: 1280px) {
     .about-me {
         padding: 110px 70px 100px;
-    }
-
-    .about-me__title {
-        font-size: 22px;
-        letter-spacing: -0.88px;
     }
 
     .about-me__photo {

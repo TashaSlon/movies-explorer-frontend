@@ -1,11 +1,13 @@
+import { Link } from 'react-router-dom';
+
 const Footer = () => {
     return (
         <footer className="footer">
-            <p className="footer__name">Учебный проект Яндекс.Практикум х BeatFilm</p>
+            <h3 className="footer__name">Учебный проект Яндекс.Практикум х BeatFilm</h3>
             <div className="footer__block">
                 <ul className="footer__links">
-                    <li>Яндекс.Практикум</li>
-                    <li>Github</li>
+                    <li><Link to="https://practicum.yandex.ru" className="link" target="_blank">Яндекс.Практикум</Link></li>
+                    <li><Link to="https://github.com" className="link" target="_blank">Github</Link></li>
                 </ul>
                 <p className="footer__year">©2020</p>
             </div>

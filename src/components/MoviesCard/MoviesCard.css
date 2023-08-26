@@ -5,6 +5,7 @@
     height: 168px;
     background-color: aliceblue;
     border-radius: 6px;
+    border: none;
 }
 
 .movies-card__info {

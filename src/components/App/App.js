@@ -14,6 +14,7 @@ function App() {
   const [userData, setUserData] = useState({});
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const [status, setStatus] = useState(false);
+  const [cinemaCheckbox, setCinemaCheckbox] = useState(true);
 
   const user = {
     name: 'Наталья',
@@ -66,6 +67,14 @@ function App() {
     });
   }
 
+  function handleCheckboxClick() {
+    if (cinemaCheckbox) {
+      setCinemaCheckbox(false);
+    } else {
+      setCinemaCheckbox(true);
+    }
+  }
+
   return (
     <div className="page">
       <Routes>
@@ -83,9 +92,10 @@ function App() {
             <Login handleLogin={handleLogin} />
           </div>} />
         <Route path="/movies" 
-        element= {<Movies />}
-        signOut = {signOut}
-        loggedIn={loggedIn} />
+          element= {<Movies 
+          cinemaCheckbox = {cinemaCheckbox}
+          onCheckboxClick = {handleCheckboxClick}
+        />} />
         <Route path="/saved-movies" 
         element= {<SavedMovies />} 
         signOut = {signOut}

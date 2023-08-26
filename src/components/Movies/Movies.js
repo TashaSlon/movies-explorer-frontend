@@ -2,41 +2,33 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import word from '../../images/33_word.jpg';
-import years from '../../images/100years.jpg';
-import benkcy from '../../images/Benkcy.jpg';
-import baskia from '../../images/Baskia.jpg';
-import run from '../../images/Run.jpg';
-
 
 const Movies = (props) => {
-    console.log(word);
-
     const list = [
         {
-            image: {word},
-            name: '33 слова о дизайне',
-            time: '1ч 17м',
+            image: 'https://api.nomoreparties.co/uploads/thumbnail_552242179_1280x720_66bc43b289.jpeg',
+            name: 'Pulp: фильм о жизни, смерти и супермаркетах',
+            time: '1ч 30м',
         },
         {
-            image: {years},
-            name: 'Киноальманах «100 лет дизайна»',
-            time: '1ч 17м',
+            image: 'https://api.nomoreparties.co/uploads/thumbnail_Super_Duper_Alice_Cooper_2014_8b1641fbaf.jpeg',
+            name: 'Супер-пупер Элис Купер',
+            time: '1ч 38м',
         },
         {
-            image: {benkcy},
-            name: 'В погоне за Бенкси',
-            time: '1ч 17м',
+            image: 'https://api.nomoreparties.co/uploads/thumbnail_orig_bc3e53efa8.jpeg',
+            name: 'Еще',
+            time: '1ч 36м',
         },
         {
-            image: {baskia},
-            name: 'Баския: Взрыв реальности',
-            time: '1ч 17м',
+            image: 'https://api.nomoreparties.co/uploads/thumbnail_zagruzhennoe_1_1817cd23a2.jpeg',
+            name: 'The National: Приняты за незнакомцев',
+            time: '1ч 15м',
         },
         {
-            image: {run},
-            name: 'Бег это свобода',
-            time: '1ч 17м',
+            image: 'https://api.nomoreparties.co/uploads/thumbnail_zagruzhennoe_2_c709860078.jpeg',
+            name: 'Панк-певица',
+            time: '1ч 21м',
         }
     ];
 
@@ -44,7 +36,9 @@ const Movies = (props) => {
         <>
             <Header loggedIn={props.loggedIn} signOut={props.signOut}/>
             <main className="content">
-                <SearchForm />
+                <SearchForm 
+                cinemaCheckbox = {props.cinemaCheckbox}
+                onCheckboxClick={props.onCheckboxClick}/>
                 <MoviesCardList list={list}/>
                 <button className='movies__btn'>Ещё</button>
             </main>

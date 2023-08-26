@@ -1,8 +1,10 @@
+import Title from "../Title/Title";
+
 const Tech = () => {
     return (
-        <section className="techs__back">
+        <section className="techs__back" id="techs">
             <div className="techs">
-                <h2 className="techs__title">Технологии</h2>
+                <Title name="Технологии" />
                 <h3 className="techs__list-title">7 технологий</h3>
                 <p className="techs__list-text">На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
                 <ul className="techs__list">

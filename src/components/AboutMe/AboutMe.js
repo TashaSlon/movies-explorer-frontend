@@ -1,11 +1,11 @@
-import photo from '../../../images/photo.jpg';
+import photo from '../../images/photo.jpg';
 import { Link } from 'react-router-dom';
-
+import Title from "../Title/Title";
 
 const AboutMe = () => {
     return (
-        <section className="about-me">
-            <h2 className="about-me__title">Студент</h2>
+        <section className="about-me" id="student">
+            <Title name="Студент" />
             <div className="about-me__block">
                 <div className="about-me__info-block">
                     <div>
@@ -16,7 +16,7 @@ const AboutMe = () => {
                             С 2022 года стала профессионально заниматься фронтендом
                         </p>
                     </div>
-                    <Link to="https://github.com/TashaSlon" className="about-me__link">GitHub</Link>
+                    <Link to="https://github.com/TashaSlon" className="link link__about-me" target="_blank">GitHub</Link>
                 </div>
                 <img src={photo} className="about-me__photo" alt="Фото. Наталья Плюснина" />
             </div>

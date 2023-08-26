@@ -1,5 +1,5 @@
 .project {
-    max-width: 1200px;
+    max-width: 1140px;
 
     margin: 0 auto;
     padding: 70px 18px;
@@ -77,13 +77,6 @@
     .project {
         padding: 90px 50px;
     }
-
-    .project__title {
-        padding-bottom: 23px;
-
-        font-size: 22px;
-        letter-spacing: -0.88px;
-    }
     
     .project__list {
         gap: 30px;
@@ -128,13 +121,6 @@
 @media screen and (min-width: 1280px) {
     .project {
         padding: 110px 70px;
-    }
-
-    .project__title {
-        padding-bottom: 23px;
-
-        font-size: 22px;
-        letter-spacing: -0.88px;
     }
     
     .project__list {
