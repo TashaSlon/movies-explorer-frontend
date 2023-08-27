@@ -9,6 +9,7 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import { getEmail, authorize, register,logout } from '../../utils/auth';
 
+
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userData, setUserData] = useState({});
@@ -100,7 +101,9 @@ function App() {
         element= {<SavedMovies />} 
         signOut = {signOut}
         loggedIn={loggedIn} />
-        <Route path="/profile" element= {<Profile user={user}/>} />
+        <Route path="/profile" 
+        element= {<Profile 
+          user={user} />} />
         <Route path="/" element={loggedIn ? <Navigate to="/" replace /> : <Navigate to="/sign-in" replace />} />
       </Routes>
     </div>

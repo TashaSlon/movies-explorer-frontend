@@ -1,3 +1,5 @@
+import { errors } from './errors.js';
+
 class Api {
     constructor(baseUrl) {
       this._baseUrl = baseUrl;
@@ -10,10 +12,12 @@ class Api {
     }
   
     _getJson(res) {
+      let message = '';
       if (res.ok) {
         return res.json();
       }
-      return Promise.reject(`Ошибка: ${res.status}`);
+      message = errors(res.status);
+      return Promise.reject(message);
     }
   
     getUserInfo() {
@@ -24,14 +28,14 @@ class Api {
       .then(this._getJson);
     }
   
-    setUserInfo(userData) {
+    setUserInfo(name, email) {
       return fetch(`${this._baseUrl}/users/me`, {
         method: 'PATCH',
         headers: this._getHeaders(),
         credentials: 'include',
         body: JSON.stringify({
-          name: userData.name,
-          about: userData.about
+          name: name,
+          email: email
         })
       })
       .then(this._getJson);
