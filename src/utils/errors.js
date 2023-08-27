@@ -4,14 +4,14 @@ export const errors = (status) => {
         case 400:
           message = 'При обновлении профиля произошла ошибка';
           break;
-        case 4:
-          alert( 'В точку!' );
-          break;
-        case 5:
-          alert( 'Перебор' );
-          break;
+        case 500:
+            message = 'На сервере произошла ошибка';
+            break;
+        case 404:
+            message = 'Страница по указанному маршруту не найдена';
+            break;
         default:
-          alert( "Нет таких значений" );
+            message ='Произошла ошибка';
       };
     return message;
 };
