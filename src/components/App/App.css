@@ -17,15 +17,6 @@
   -moz-text-size-adjust: 100%;
 }
 
-.content {
-  height: 87vh;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .auth {
   position: relative;
 
@@ -203,10 +194,6 @@
   .page {
     font-size: 12px;
     line-height: calc(18 / 12);
-  }
-
-  .content {
-    height: 85vh;
   }
 
   .auth__input {
