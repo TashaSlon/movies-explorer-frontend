@@ -11,7 +11,7 @@ const Main = (props) => {
     return (
         <>
             <Header loggedIn={props.loggedIn} signOut={props.signOut}/>
-            <main className="content">
+            <main>
                 <Promo />
                 <AboutProject />
                 <Techs />

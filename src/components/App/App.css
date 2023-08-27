@@ -17,13 +17,29 @@
   -moz-text-size-adjust: 100%;
 }
 
+.content {
+  height: 87vh;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .auth {
   position: relative;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   max-width: 396px;
+  height: 100vh;
   
   margin: 0 auto;
-  padding: 56px 30px 0;
+  padding: 0 30px 0;
 }
 
 .auth__header {
@@ -41,6 +57,8 @@
 .auth__form {
   display: grid;
   grid-auto-rows: 437px 100px;
+
+  width: 100%;
 
   padding-top: 60px;
 }
@@ -194,6 +212,10 @@
   .page {
     font-size: 12px;
     line-height: calc(18 / 12);
+  }
+
+  .content {
+    height: 85vh;
   }
 
   .auth__input {
