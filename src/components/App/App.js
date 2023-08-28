@@ -8,21 +8,28 @@ import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import { getEmail, authorize, register,logout } from '../../utils/auth';
+import { api } from '../../utils/api.js';
 
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState({
+    name: 'Наталья',
+    email: 'exampl@exampl.com'
+  });
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const [status, setStatus] = useState(false);
   const [cinemaCheckbox, setCinemaCheckbox] = useState(true);
 
-  const user = {
-    name: 'Наталья',
-    email: 'exampl@exampl.com'
-  }
-
   const navigate = useNavigate();
+
+  useEffect(() => {
+    api.getUserInfo()
+    .then(userData => {
+        setUserData(userData);
+    })
+    .catch(err => console.log(`Ошибка.....: ${err}`))
+},[]);
 
   function handleInfoTooltipClick(res) {
     if(res.data) {
@@ -101,9 +108,7 @@ function App() {
         element= {<SavedMovies />} 
         signOut = {signOut}
         loggedIn={loggedIn} />
-        <Route path="/profile" 
-        element= {<Profile 
-          user={user} />} />
+        <Route path="/profile" element= {<Profile user={userData}/>} />
         <Route path="/" element={loggedIn ? <Navigate to="/" replace /> : <Navigate to="/sign-in" replace />} />
       </Routes>
     </div>

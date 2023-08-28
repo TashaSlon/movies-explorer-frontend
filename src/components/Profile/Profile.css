@@ -45,7 +45,7 @@
     flex-direction: column;
     justify-content: center;
 
-    margin: 20px auto 0;   
+    margin: 379px auto 0;   
 }
 
 .profile__button-group_disabled {
@@ -102,7 +102,7 @@
     }
 
     .profile__button-group {
-        margin-top: 176px;
+        margin-top: 210px;
     }
 }
 
@@ -120,7 +120,7 @@
     }
 
     .profile__button-group {
-        margin-top: 186px;
+        margin-top: 220px;
     }
 
     .profile__button {
