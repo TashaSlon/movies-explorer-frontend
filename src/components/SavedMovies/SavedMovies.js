@@ -31,7 +31,7 @@ const SavedMovies = (props) => {
     return (
         <>
             <Header loggedIn={props.loggedIn} signOut={props.signOut}/>
-            <main className="content">
+            <main>
                 <SearchForm />
                 <MoviesCardList list={list}/>
             </main>
