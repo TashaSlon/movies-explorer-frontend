@@ -57,6 +57,11 @@
     text-align: center;
 }
 
+.search__short-films:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
 .search__input-radio {
     width: 0;
     height: 0;

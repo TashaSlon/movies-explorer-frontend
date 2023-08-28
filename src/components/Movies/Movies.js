@@ -40,7 +40,7 @@ const Movies = (props) => {
                 cinemaCheckbox = {props.cinemaCheckbox}
                 onCheckboxClick={props.onCheckboxClick}/>
                 <MoviesCardList list={list}/>
-                <button className='movies__btn'>Ещё</button>
+                <button className='movies__btn btn'>Ещё</button>
             </main>
             <Footer />
         </>

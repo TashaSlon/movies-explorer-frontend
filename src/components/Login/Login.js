@@ -35,11 +35,11 @@ const Login = (props) => {
                 </header>
                 <form onSubmit={handleSubmit} className="auth__form">
                     <div className="auth__inputs">
-                        <label className="auth__label" for="email">
+                        <label className="auth__label" htmlFor="email">
                             E-mail
                             <input className="auth__input" id="email" name="email" type="email" value={formValue.email} onChange={handleChange} placeholder='E-mail'/>
                         </label>
-                        <label className="auth__label" for="password">
+                        <label className="auth__label" htmlFor="password">
                             Пароль
                             <input className="auth__input" id="password" name="password" type="password" value={formValue.password} onChange={handleChange} placeholder='Пароль'/>
                         </label>

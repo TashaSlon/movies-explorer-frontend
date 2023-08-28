@@ -71,16 +71,16 @@ const Profile = (props) => {
                             <div className='profile__email'>{email}</div>
                         </div>
                         <div className="profile__button-group">
-                            <button className="profile__button" onClick={handleEdit}>Редактировать</button>
-                            <button className="profile__button profile__button-accent">Выйти из аккаунта</button>
+                            <button className="btn profile__button" onClick={handleEdit}>Редактировать</button>
+                            <button className="btn profile__button profile__button-accent">Выйти из аккаунта</button>
                         </div>
                     </div>
                     <form onSubmit={handleSubmit} className="profile__fieldset profile__fieldset_disabled">
-                        <label className="profile__field profile__field-border" for="name">
+                        <label className="profile__field profile__field-border" htmlFor="name">
                             Имя
                             <input className="profile__input" id="name" name="name" type="text" value={formValue.name} onChange={handleChange} placeholder={formValue.name}/>
                         </label>
-                        <label className="profile__field" for="email">
+                        <label className="profile__field" htmlFor="email">
                             E-mail
                             <input className="profile__input" id="email" name="email" type="email" value={formValue.email} onChange={handleChange} placeholder={formValue.email}/>
                         </label>
