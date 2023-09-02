@@ -1,0 +1,40 @@
+.not-found {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+}
+
+.not-found__title {
+    margin: 0;
+
+    font-size: 80px;
+    font-weight: 400;
+}
+
+.not-found__subtitle {
+    margin: 0;
+    padding-top: 10px;
+
+    font-size: 12px;
+}
+
+@media screen and (min-width: 768px) {
+    .not-found__title {
+        font-size: 140px;
+    }
+
+    .not-found__subtitle {
+        padding-top: 5px;
+    
+        font-size: 16px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .not-found__title {
+        font-size: 140px;
+    }
+}

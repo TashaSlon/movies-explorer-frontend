@@ -7,7 +7,6 @@ import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 
 const Main = (props) => {
-
     return (
         <>
             <Header loggedIn={props.loggedIn} signOut={props.signOut}/>

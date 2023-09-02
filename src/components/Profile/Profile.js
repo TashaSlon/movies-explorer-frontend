@@ -57,7 +57,7 @@ const Profile = (props) => {
 
     return (
         <>
-            <Header />
+            <Header loggedIn={props.loggedIn} signOut={props.signOut}/>
             <main className="profile__content">
                 <section className="profile">
                     <h1 className="profile__title">Привет, {name}!</h1>

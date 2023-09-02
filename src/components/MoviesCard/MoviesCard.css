@@ -1,3 +1,7 @@
+.movies-card {
+    position: relative;
+}
+
 .movies-card__image {
     display: block;
 
@@ -6,6 +10,10 @@
     background-color: aliceblue;
     border-radius: 6px;
     border: none;
+}
+
+.movies-card__image:hover {
+    content: 'Сохранить'
 }
 
 .movies-card__info {
@@ -40,6 +48,19 @@
 
     border-radius: 3px;
     background-color: #2F2F2F;
+}
+
+.movies-card__saved {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+
+    width: 21px;
+    height: 21px;
+
+    background-image: url('../../images/save.svg');
+    background-size: 21px 21px;
+    background-position: center;
 }
 
 @media screen and (min-width: 768px) {

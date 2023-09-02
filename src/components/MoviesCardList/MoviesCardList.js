@@ -6,7 +6,7 @@ const MoviesCardList = (props) => {
     const getFilmList = films => {
         let content = [];
         for (let i = 0; i < films.length; i++) {
-          content.push(<MoviesCard movie={films[i]}/>);
+          content.push(<MoviesCard movie={films[i]} page={props.page}/>);
         }
         return content;
     };

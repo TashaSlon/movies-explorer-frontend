@@ -7,6 +7,7 @@ import Login from '../Login/Login';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
+import NotFound from '../NotFound/NotFound';
 import { getEmail, authorize, register,logout } from '../../utils/auth';
 import { api } from '../../utils/api.js';
 
@@ -23,13 +24,26 @@ function App() {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
+  /*function tokenCheck() {
     api.getUserInfo()
-    .then(userData => {
-        setUserData(userData);
+    .then((res) => {
+      if (res){
+        setLoggedIn(true);
+        navigate("/", {replace: true});
+      }
     })
     .catch(err => console.log(`Ошибка.....: ${err}`))
-},[]);
+  };
+
+  useEffect(() => {
+    tokenCheck();
+    if (loggedIn){
+      api.getUserInfo()
+        .then(userData => {
+          setUserData(userData);
+        })
+        .catch(err => console.log(`Ошибка.....: ${err}`))
+    }},[loggedIn]); */
 
   function handleInfoTooltipClick(res) {
     if(res.data) {
@@ -87,9 +101,8 @@ function App() {
     <div className="page">
       <Routes>
         <Route path="/" 
-        element= {<Main />} 
-        signOut = {signOut}
-        loggedIn={loggedIn}
+        element= {<Main signOut = {signOut}
+        loggedIn={loggedIn}/>} 
         />
         <Route path="/sign-up" element={
           <div className="registerContainer">
@@ -103,13 +116,21 @@ function App() {
           element= {<Movies 
           cinemaCheckbox = {cinemaCheckbox}
           onCheckboxClick = {handleCheckboxClick}
+          signOut = {signOut}
+          loggedIn={loggedIn}
         />} />
         <Route path="/saved-movies" 
-        element= {<SavedMovies />} 
+        element= {<SavedMovies 
+        cinemaCheckbox = {cinemaCheckbox}
+        onCheckboxClick = {handleCheckboxClick}
         signOut = {signOut}
-        loggedIn={loggedIn} />
-        <Route path="/profile" element= {<Profile user={userData}/>} />
-        <Route path="/" element={loggedIn ? <Navigate to="/" replace /> : <Navigate to="/sign-in" replace />} />
+        loggedIn={loggedIn}/>}  />
+        <Route path="/profile" element= {<Profile 
+        user={userData} 
+        signOut = {signOut}
+        loggedIn={loggedIn}/>} />
+        <Route path="/404" element= {<NotFound />} />
+        {/*<Route path="/" element={loggedIn ? <Navigate to="/" replace /> : <Navigate to="/sign-in" replace />} /> */}
       </Routes>
     </div>
   );
