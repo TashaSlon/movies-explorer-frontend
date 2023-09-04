@@ -5,19 +5,16 @@ import { Link } from 'react-router-dom';
 const Header = (props) => {
     function openSidebar() {
         const sidebar = document.querySelector('.header__sidebar');
-        const html = document.querySelector('html');
         sidebar.classList.add('header__sidebar_active');
-        
     }
 
     function closeSidebar() {
         const sidebar = document.querySelector('.header__sidebar');
         sidebar.classList.remove('header__sidebar_active');
-        const html = document.querySelector('html');
-        
     }
 
     return (
+        
         <section className="header">
             <Logo />
             { (() => {
@@ -47,6 +44,7 @@ const Header = (props) => {
                         }
                 })()}
         </section>
+        
     );
 };
 export default Header;

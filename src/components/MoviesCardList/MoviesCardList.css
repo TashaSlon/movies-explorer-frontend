@@ -1,7 +1,6 @@
 .movies-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     column-gap: 30px;
     row-gap: 36px;
 
@@ -14,16 +13,28 @@
     list-style: none;
 }
 
+.movies-list__saved {
+    padding-bottom: 153px;
+}
+
 @media screen and (min-width: 768px) {
     .movies-list {
         row-gap: 48px;
  
         padding: 80px 30px 0;
     }
+
+    .movies-list__saved {
+        padding-bottom: 175px;
+    }
 }
 
 @media screen and (min-width: 1280px) {
     .movies-list {
         row-gap: 57px;
+    }
+
+    .movies-list__saved {
+        padding-bottom: 242px;
     }
 }

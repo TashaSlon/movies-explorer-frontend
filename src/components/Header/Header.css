@@ -4,10 +4,11 @@
     align-items: center;
     align-self: center;
 
-   max-width: 1200px; 
+   max-width: 1280px; 
 
    margin: 0 auto;
    padding: 18px 14px;
+   box-sizing: border-box;
 }
 
 .header__button-block {
@@ -18,6 +19,8 @@
 .header__nav {
     display: none;
     gap: 16px;
+
+    padding-left: 62px;
 
     font-size: 13px;
     line-height: 138.5%;
@@ -31,11 +34,10 @@
     position: fixed;
     top: 0;
     right: 0;
-    z-index: 2;
 
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-end;
     align-items: center;
 
     width: 100%;
@@ -46,11 +48,11 @@
 
 .header__cross {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 15px;
+    right: 15px;
 
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
 }
 
 .header__nav {
@@ -64,6 +66,14 @@
 
     .header__sidebar_active {
         width: 520px;
+        border-left: 730px solid rgba(0, 0, 0, .5);
+        -webkit-background-clip: padding-box; /* for Safari */
+        background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+    }
+
+    .header__cross {
+        top: 22px;
+        right: 22px;
     }
 }
 

@@ -159,11 +159,12 @@
 }
 
 .link__sidebar {
-  padding-bottom: 24px;
+  padding-top: 24px;
 
   text-align: center;
   font-size: 18px;
   font-weight: 500;
+  line-height: 120%;
 }
 
 .link__not-found {
@@ -269,6 +270,8 @@
 }
 
 .btn__sidebar-account {
+  margin-top: 444px;
+  margin-bottom: 46px;
   padding: 8px 20px;
 
   border-radius: 20px;
@@ -385,6 +388,10 @@
     line-height: 130%;
   }
 
+  .link__sidebar {
+    line-height: 140%;
+  }
+
   .link__not-found {
     position: absolute;
     
@@ -425,6 +432,11 @@
 
   .btn__account {
     display: none;
+  }
+
+  .btn__sidebar-account {
+    margin-top: 621px;
+    margin-bottom: 90px;
   }
 
   .btn__header-menu {

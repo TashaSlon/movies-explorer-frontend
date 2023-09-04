@@ -12,7 +12,7 @@ const MoviesCardList = (props) => {
     };
 
     return (
-        <ul className="movies-list">
+        <ul className={(props.page === 'movies') ? "movies-list" : "movies-list movies-list__saved"}>
             { getFilmList(list) }
         </ul>
     );
