@@ -93,6 +93,8 @@
 
     .search__input {
         width: 90%;
+
+        padding: 16px 20px;
     }
 }
 
@@ -103,5 +105,11 @@
 
     .search__input {
         width: 95%;
+    }
+
+    .search__short-films {
+        padding-top: 29px;
+        font-size: 12px;
+        line-height: 150%;
     }
 }

@@ -53,7 +53,7 @@
     .about-me__block {
         flex-direction: row;
 
-        padding-top: 66px;
+        padding-top: 62px;
     }
 
     .about-me__info-block {
@@ -83,6 +83,10 @@
 @media screen and (min-width: 1280px) {
     .about-me {
         padding: 110px 70px 100px;
+    }
+
+    .about-me__block {
+        padding-top: 66px;
     }
 
     .about-me__photo {

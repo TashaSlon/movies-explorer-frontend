@@ -3,18 +3,25 @@
     flex-wrap: wrap;
     justify-content: center;
     column-gap: 30px;
-    row-gap: 45px;
+    row-gap: 36px;
 
     max-width: 1140px;
     height: 100%;
 
     margin: 0 auto;
-    padding: 80px 10px 0;
+    padding: 48px 10px 0;
 }
 
 @media screen and (min-width: 768px) {
     .movies-list {
-        padding-left: 30px;
-        padding-right: 30px;
+        row-gap: 48px;
+ 
+        padding: 80px 30px 0;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .movies-list {
+        row-gap: 57px;
     }
 }

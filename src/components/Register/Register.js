@@ -47,7 +47,7 @@ const Register = (props) => {
                     <div className="auth__button-container">
                         <button type="submit" onSubmit={handleSubmit} className="btn btn__auth">Зарегистрироваться</button>
                         <div className="auth__signin">
-                            <p>Уже зарегистрированы?</p>
+                            <p className="auth__signin-text">Уже зарегистрированы?</p>
                             <Link to="/sign-in" className="link link__login">Войти</Link>
                         </div>
                     </div>

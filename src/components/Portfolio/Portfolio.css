@@ -52,14 +52,14 @@
 
 .portfolio__text::after {
     position: absolute;
-    top: 8px;
-    right: 0;
+    top: 7px;
+    right: 4px;
 
     display: inline-block;
 
     content: '';
-    width: 14px;
-    height: 14px;
+    width: 11px;
+    height: 11px;
     background-image: url('../../images/arrow.svg');
     background-position: center;
     background-repeat: no-repeat;
@@ -72,7 +72,7 @@
 
 @media screen and (min-width: 768px) {
     .portfolio {
-        padding: 0 50px 90px;
+        padding: 0 50px 71px;
     }
 
     .portfolio__title {
@@ -107,7 +107,7 @@
 
 @media screen and (min-width: 1280px) {
     .portfolio {
-        padding: 0 70px 125px;
+        padding: 0 70px 106px;
     }
 
     .portfolio__list-item {
@@ -120,8 +120,8 @@
     }
 
     .portfolio__text::after {
-        width: 22px;
-        height: 22px;
+        width: 18px;
+        height: 18px;
     }
 
     .portfolio__arrow {

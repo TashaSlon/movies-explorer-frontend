@@ -1,6 +1,6 @@
 .title {
     margin: 0;
-    padding-bottom: 28px;
+    padding-bottom: 26px;
 
     font-size: 18px;
     font-weight: 400;
@@ -9,18 +9,9 @@
     border-bottom: 1px solid #DADADA;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1279px) {
+@media screen and (min-width: 768px) {
     .title {
-        padding-bottom: 23px;
-
-        font-size: 22px;
-        letter-spacing: -0.88px;
-    }
-}
-
-@media screen and (min-width: 1280px) {
-    .title {
-        padding-bottom: 23px;
+        padding-bottom: 20px;
 
         font-size: 22px;
         letter-spacing: -0.88px;

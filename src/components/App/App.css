@@ -41,35 +41,35 @@
 
   max-width: 396px;
   height: 100vh;
+  box-sizing: border-box;
   
   margin: 0 auto;
-  padding: 0 30px 0;
+  padding: 32px 30px 0;
 }
 
 .auth__header {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .auth__title {
   margin: 0;
-  padding-top: 50px;
+  padding-top: 46px;
 
   font-size: 24px;
   font-weight: 500;
 }
 
 .auth__form {
-  display: grid;
-  grid-auto-rows: 437px 100px;
-
   width: 100%;
 
-  padding-top: 60px;
+  padding-top: 58px;
 }
 
 .auth__inputs {
-  grid-column: 1;
-  grid-row: 1;
+
 }
 
 .auth__label {
@@ -79,6 +79,7 @@
 
   color: #8B8B8B;
   font-size: 10px;
+  font-weight: 400;
 }
 
 .auth__input {
@@ -86,7 +87,7 @@
   width: 100%;
   box-sizing: border-box;
 
-  margin-top: 10px;
+  margin-top: 8px;
   padding: 15px;
 
   border: none;
@@ -97,12 +98,13 @@
 }
 
 .auth__button-container {
-  grid-column: 1;
-  grid-row: 2;
-  grid-row-end: 3;
-
-  
   max-width: 396px;
+
+  padding-top: 179px;
+}
+
+.auth__button-container-signin {
+  padding-top: 267px;
 }
 
 .auth__signin {
@@ -110,11 +112,17 @@
   justify-content: center;
   align-items: center;
 
+  padding-top: 16px;
+
   max-width: 396px;
 
   color: #8B8B8B;
   font-size: 12px;
   text-align: center;
+}
+
+.auth__signin-text {
+  margin: 0;
 }
 
 .link {
@@ -159,7 +167,8 @@
 }
 
 .link__not-found {
-  padding-top: 284px;
+  position: absolute;
+  bottom: 30px;
 
   color: #4285F4;
   font-size: 12px;
@@ -178,7 +187,9 @@
 }
 
 .btn__menu {
-  padding: 5px 15.5px;
+  padding: 5px 0;
+
+  width: 82px;
 
   border-radius: 6px;
   background: #303030;
@@ -196,6 +207,8 @@
   border-radius: 3px;
 
   color: #000;
+  font-size: 10px;
+  line-height: 160%;
   border: none;
 }
 
@@ -285,8 +298,26 @@
 
 .btn__card-save {
   position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+
+  background-color: transparent;
+  color: transparent;
+
+  border: none;
+}
+
+.btn__card-save:hover {
+  position: absolute;
   top: 14px;
-  right: 14px;
+  left: 218px;
+  
+
+  height: 21px;
+  width: 72px;
 
   padding: 6px 7px;
 
@@ -310,12 +341,35 @@
     height: 85vh;
   }
 
+  .auth {
+    align-items: flex-start;
+
+    padding: 0;
+  }
+
+  .auth__title {
+    padding-top: 36px;
+  }
+
+  .auth__header {
+    align-items: flex-start;
+  }
+
+  .auth__form {
+    padding-top: 16px;
+  }
+
   .auth__input {
     max-width: 396px;
   }
 
   .auth__button-container {
     width: 396px;
+    padding-top: 91px;
+  }
+
+  .auth__button-container-signin {
+    padding-top: 179px;
   }
 
   .auth__signin {
@@ -328,25 +382,35 @@
     padding-right: 30px;
 
     font-size: 12px;
+    line-height: 130%;
   }
 
   .link__not-found {
-    padding-top: 184px;
+    position: absolute;
+    
+    bottom: 222px;
   }
 
   .btn__menu {
-    padding: 10px 17px;
+    padding: 10px 0;
+
+    width: 96px;
+    box-sizing: border-box;
 
     border-radius: 10px;
     background: #303030;
 
     font-size: 12px;
+    line-height: 133%;
     color: #fff;
     text-decoration: none;
   }
 
   .btn__header {
     padding: 8px 20px;
+
+    font-size: 12px;
+    line-height: 133%;
   }
 
   .btn__auth {
@@ -369,6 +433,10 @@
     height: 44px;
     width: 44px;
   }
+
+  .btn__card-save:hover {
+    left: 256px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -377,12 +445,24 @@
     line-height: calc(20 / 14);
   }
 
+  .auth__title {
+    padding-top: 40px;
+  }
+
+  .link__not-found {
+    bottom: 60px;
+  }
+
   .btn__account {
     display: block;
   }
 
   .btn__header-menu {
     display: none;
+  }
+
+  .btn__card-save:hover {
+    left: 274px;
   }
 }
 

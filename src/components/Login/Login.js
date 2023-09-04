@@ -44,10 +44,10 @@ const Login = (props) => {
                             <input className="auth__input" id="password" name="password" type="password" value={formValue.password} onChange={handleChange} placeholder='Пароль'/>
                         </label>
                     </div>
-                    <div className="auth__button-container">
+                    <div className="auth__button-container auth__button-container-signin">
                         <button type="submit" onSubmit={handleSubmit} className="btn btn__auth">Войти</button>
                         <div className="auth__signin">
-                            <p>Ещё не зарегистрированы?</p>
+                            <p className="auth__signin-text">Ещё не зарегистрированы?</p>
                             <Link to="/sign-up" className="link link__login">Регистрация</Link>
                         </div>
                     </div>

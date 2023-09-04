@@ -9,7 +9,7 @@ const Footer = () => {
                     <li><Link to="https://practicum.yandex.ru" className="link" target="_blank">Яндекс.Практикум</Link></li>
                     <li><Link to="https://github.com" className="link" target="_blank">Github</Link></li>
                 </ul>
-                <p className="footer__year">©2020</p>
+                <p className="footer__year">©2023</p>
             </div>
         </footer>
     );

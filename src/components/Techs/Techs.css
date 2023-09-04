@@ -2,7 +2,7 @@
     max-width: 1140px;
 
     margin: 0 auto;
-    padding: 70px 18px;
+    padding: 72px 18px 68px;
 }
 
 .techs__title {
@@ -18,7 +18,7 @@
 
 .techs__list-title {
     margin: 0 auto;
-    padding-top: 60px;
+    padding-top: 58px;
 
     font-size: 30px;
     font-weight: 400;
@@ -30,9 +30,11 @@
     max-width: 460px;
 
     margin: 0 auto;
-    padding-top: 24px;
+    padding-top: 18px;
 
     text-align: center;
+    font-size: 11px;
+    line-height: 145.5%;
     letter-spacing: -0.44px;
 }
 
@@ -49,9 +51,14 @@
 }
 
 .techs__list-item {
-    width: 84px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    padding: 21px 0;
+    width: 84px;
+    height: 57px;
+
+    padding: 0;
 
     background-color: #303030;
     border-radius: 10px;
@@ -78,6 +85,8 @@
     }
 
     .techs__list-title {
+        padding-top: 80px;
+
         font-size: 50px;
         line-height: 116%;
         letter-spacing: -2px;
@@ -85,6 +94,9 @@
 
     .techs__list-text {
         padding-top: 22px;
+
+        font-size: 12px;
+        line-height: 150%;
     }
 
     .techs__list {
@@ -104,11 +116,23 @@
         letter-spacing: -0.88px;
     }
 
+    .techs__list-title {
+        padding-top: 90px;
+    }
+
     .techs__list-text {
         padding-top: 26px;
+
+        font-size: 14px;
+        line-height: 142.9%;
+        letter-spacing: -0.56px;
     }
 
     .techs__list {
         padding-top: 100px;
+    }
+
+    .techs__list-item {
+        width: 90px;
     }
 }

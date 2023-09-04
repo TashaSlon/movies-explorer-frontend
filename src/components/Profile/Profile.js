@@ -62,13 +62,15 @@ const Profile = (props) => {
                 <section className="profile">
                     <h1 className="profile__title">Привет, {name}!</h1>
                     <div className="profile__fieldset">
-                        <div className="profile__field profile__field-border">
-                            <div>Имя</div>
-                            <div className='profile__name'>{name}</div>
-                        </div>
-                        <div className="profile__field">
-                            <div>E-mail</div>
-                            <div className='profile__email'>{email}</div>
+                        <div>
+                            <div className="profile__field profile__field-border">
+                                <div>Имя</div>
+                                <div className='profile__name'>{name}</div>
+                            </div>
+                            <div className="profile__field">
+                                <div>E-mail</div>
+                                <div className='profile__email'>{email}</div>
+                            </div>
                         </div>
                         <div className="profile__button-group">
                             <button className="btn profile__button" onClick={handleEdit}>Редактировать</button>
