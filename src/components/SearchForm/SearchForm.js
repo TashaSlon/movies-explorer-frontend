@@ -12,8 +12,8 @@ const SearchForm = ({cinemaCheckbox, onCheckboxClick}) => {
                 </fieldset>
                 <div className="search__short-films" onClick={handleClick}>
                     <div className={cinemaCheckbox ? "search__new-radio" : "search__new-radio search__new-radio_disabled"}></div>
-                    <label for="short-films">
-                        <input className="search__input-radio" type="radio" id="short-films" name="short-films" value="short-films" checked />
+                    <label htmlFor="short-films">
+                        <input className="search__input-radio" type="radio" id="short-films" name="short-films" value="short-films" onChange={handleClick} checked />
                         Короткометражки
                     </label>
                 </div>

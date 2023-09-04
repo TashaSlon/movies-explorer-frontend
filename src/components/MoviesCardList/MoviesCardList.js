@@ -12,9 +12,9 @@ const MoviesCardList = (props) => {
     };
 
     return (
-        <section className="movies-list">
+        <ul className="movies-list">
             { getFilmList(list) }
-        </section>
+        </ul>
     );
 };
 export default MoviesCardList;
