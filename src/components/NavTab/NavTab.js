@@ -5,13 +5,13 @@ const NavTab = () => {
         <nav>
             <ul className="menu">
                 <li>
-                    <Link to="/#project" className="btn btn__menu">О проекте</Link>
+                    <Link to="/#project" className="btn menu__btn">О проекте</Link>
                 </li>
                 <li>
-                    <Link to="/#techs" className="btn btn__menu">Технологии</Link>
+                    <Link to="/#techs" className="btn menu__btn">Технологии</Link>
                 </li>
                 <li>
-                    <Link to="/#student" className="btn btn__menu">Студент</Link>
+                    <Link to="/#student" className="btn menu__btn">Студент</Link>
                 </li>
             </ul>
         </nav>

@@ -38,8 +38,8 @@ const Header = (props) => {
                                     </>)
                         } else {
                             return <div className='header__button-block'>
-                                <Link to="/sign-up" className="link link__header">Регистрация</Link>
-                                <Link to="/sign-in" className="btn btn__header">Войти</Link>
+                                <Link to="/sign-up" className="link header__link">Регистрация</Link>
+                                <Link to="/sign-in" className="btn header__btn">Войти</Link>
                             </div>
                         }
                 })()}

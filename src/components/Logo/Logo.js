@@ -3,11 +3,11 @@ import logo from '../../images/logo.svg';
 
 const Logo = () => {
     return (
-        <>
+        <div className="logo">
             <Link to="/" className="logo__block">
-                <img src={logo} className="logo" alt="Логотип" />
+                <img src={logo} className="logo__image" alt="Логотип" />
             </Link>
-        </>
+        </div>
         );
 };
 export default Logo;

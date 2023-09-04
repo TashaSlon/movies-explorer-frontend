@@ -16,7 +16,7 @@ const AboutMe = () => {
                             С 2022 года стала профессионально заниматься фронтендом
                         </p>
                     </div>
-                    <Link to="https://github.com/TashaSlon" className="link link__about-me" target="_blank">GitHub</Link>
+                    <Link to="https://github.com/TashaSlon" className="link about-me__link" target="_blank">GitHub</Link>
                 </div>
                 <img src={photo} className="about-me__photo" alt="Фото. Наталья Плюснина" />
             </div>
