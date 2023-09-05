@@ -62,7 +62,8 @@
 
 .header__link {
     padding-right: 14px;
-  
+    
+    color: #FFF;
     font-size: 10px;
     line-height: calc(16px / 10px);
 }
@@ -114,6 +115,7 @@ padding: 5px 12px;
 .header__sidebar-link {
     padding-top: 24px;
 
+    color: #FFF;
     text-align: center;
     font-size: 18px;
     font-weight: 500;
@@ -154,6 +156,7 @@ padding: 5px 12px;
     .header__link {
         padding-right: 30px;
     
+        color: #FFF;
         font-size: 12px;
         line-height: 130%;
     }
