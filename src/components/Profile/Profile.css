@@ -1,4 +1,4 @@
-.profile {
+.profile__content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -101,8 +101,22 @@
     font-weight: 400;
 }
 
+.profile__btn-save {
+    width: 100%;
+    max-width: 410px;
+  
+    margin: 20px auto 0;
+    padding: 13px 15px 15px;
+  
+    border-radius: 3px;
+    background-color: #4285F4;
+    font-size: 12px;
+    color: #fff;
+    border: none;
+}
+
 @media screen and (min-width: 768px) {
-    .profile__content {
+    .profile {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -120,14 +134,18 @@
     .profile__button-group {
         padding-top: 193px;
     }
+
+    .profile__btn-save {
+        font-size: 14px;
+    }
 }
 
 @media screen and (min-width: 1280px) {
-    .profile__content {
+    .profile {
         height: 90vh;
     }
 
-    .profile {
+    .profile__content {
         padding: 20px 70px;
     }
 

@@ -45,10 +45,10 @@ const Register = (props) => {
                         </label>
                     </div>
                     <div className="auth__button-container">
-                        <button type="submit" onSubmit={handleSubmit} className="btn btn__auth">Зарегистрироваться</button>
+                        <button type="submit" onSubmit={handleSubmit} className="btn auth__btn">Зарегистрироваться</button>
                         <div className="auth__signin">
                             <p className="auth__signin-text">Уже зарегистрированы?</p>
-                            <Link to="/sign-in" className="link link__login">Войти</Link>
+                            <Link to="/sign-in" className="link auth__link">Войти</Link>
                         </div>
                     </div>
                 </form>

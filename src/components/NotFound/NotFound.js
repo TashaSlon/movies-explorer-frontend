@@ -6,7 +6,7 @@ const NotFound = () => {
         <section className="not-found">
             <h1 className="not-found__title">404</h1>
             <p className="not-found__subtitle">Страница не найдена</p>
-            <Link to="/" className="link link__not-found">Назад</Link>
+            <Link to="/" className="link not-found__link">Назад</Link>
         </section>
     );
 };

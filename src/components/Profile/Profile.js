@@ -58,8 +58,8 @@ const Profile = (props) => {
     return (
         <>
             <Header loggedIn={props.loggedIn} signOut={props.signOut}/>
-            <main className="profile__content">
-                <section className="profile">
+            <main className="profile">
+                <section className="profile__content">
                     <h1 className="profile__title">Привет, {name}!</h1>
                     <div className="profile__fieldset">
                         <div>
@@ -87,7 +87,7 @@ const Profile = (props) => {
                             <input className="profile__input" id="email" name="email" type="email" value={formValue.email} onChange={handleChange} placeholder={formValue.email}/>
                         </label>
                         <div className='profile__error'></div>
-                        <button type="submit" onSubmit={handleSubmit} className='btn btn__profile-save'>Сохранить</button>
+                        <button type="submit" onSubmit={handleSubmit} className='btn profile__btn-save'>Сохранить</button>
                     </form>
                 </section>
             </main>

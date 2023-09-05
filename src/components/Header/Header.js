@@ -24,16 +24,16 @@ const Header = (props) => {
                                             <Link to="/movies" className="link">Фильмы</Link>
                                             <Link to="/saved-movies" className="link">Сохраненные фильмы</Link>
                                         </nav>
-                                        <Link to="/profile" className="btn btn__account">Аккаунт</Link>
-                                        <button className="btn btn__header-menu" onClick={openSidebar}></button>
+                                        <Link to="/profile" className="header__account">Аккаунт</Link>
+                                        <button className="btn header__btn-menu" onClick={openSidebar}></button>
                                         <div className="header__sidebar">
                                             <img className="header__cross" src={Cross} alt="Закрыть" onClick={closeSidebar}></img>
                                             <nav className="header__sidebar-nav">
-                                                <Link to="/" className="link link__sidebar">Главная</Link>
-                                                <Link to="/movies" className="link link__sidebar">Фильмы</Link>
-                                                <Link to="/saved-movies" className="link link__sidebar">Сохраненные фильмы</Link>
+                                                <Link to="/" className="link header__sidebar-link">Главная</Link>
+                                                <Link to="/movies" className="link header__sidebar-link">Фильмы</Link>
+                                                <Link to="/saved-movies" className="link header__sidebar-link">Сохраненные фильмы</Link>
                                             </nav>
-                                            <Link to="/profile" className="btn btn__sidebar-account">Аккаунт</Link>
+                                            <Link to="/profile" className="btn header__sidebar-account">Аккаунт</Link>
                                         </div>
                                     </>)
                         } else {

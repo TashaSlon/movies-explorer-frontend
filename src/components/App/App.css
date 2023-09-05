@@ -125,6 +125,25 @@
   margin: 0;
 }
 
+.auth__btn {
+  width: 100%;
+  max-width: 396px;
+
+  padding: 15px;
+
+  border-radius: 3px;
+  background-color: #4285F4;
+  font-size: 12px;
+  color: #fff;
+  border: none;
+}
+
+.auth__link {
+  padding-left: 7px;
+
+  color: #4285F4;
+}
+
 .link {
   display: block;
 
@@ -138,36 +157,6 @@
   cursor: pointer;
 }
 
-.link__header {
-  padding-right: 14px;
-
-  font-size: 10px;
-  line-height: calc(16px / 10px);
-}
-
-.link__login {
-  padding-left: 7px;
-
-  color: #4285F4;
-}
-
-.link__sidebar {
-  padding-top: 24px;
-
-  text-align: center;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 120%;
-}
-
-.link__not-found {
-  position: absolute;
-  bottom: 30px;
-
-  color: #4285F4;
-  font-size: 12px;
-}
-
 .btn {
   display: block;
 
@@ -178,127 +167,6 @@
 .btn:hover {
   opacity: 0.8;
   cursor: pointer;
-}
-
-.btn__auth {
-  width: 100%;
-  max-width: 396px;
-
-  padding: 15px;
-
-  border-radius: 3px;
-  background-color: #4285F4;
-  font-size: 12px;
-  color: #fff;
-  border: none;
-}
-
-.btn__profile-save {
-  width: 100%;
-  max-width: 410px;
-
-  margin: 20px auto 0;
-  padding: 13px 15px 15px;
-
-  border-radius: 3px;
-  background-color: #4285F4;
-  font-size: 12px;
-  color: #fff;
-  border: none;
-}
-
-.btn__profile-save_disabled {
-  display: none;
-}
-
-.btn__account {
-  display: none;
-
-  padding: 8px 20px;
-
-  border-radius: 20px;
-  background-color: #313131;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 114.3%;
-  color: #fff;
-}
-
-.btn__header-menu {
-  display: block;
-
-  height: 40px;
-  width: 44px;
-  background-image: url('../../images/menu.svg');
-  background-size: cover;
-  background-color: transparent;
-  background-position: 0 -2px;
-  border: none;
-}
-
-.btn__sidebar-account {
-  margin-top: 444px;
-  margin-bottom: 46px;
-  padding: 8px 20px;
-
-  border-radius: 20px;
-  background-color: #313131;
-
-  color: #fff;
-  font-size: 14px;
-  line-height: 114.3%;
-  font-weight: 500;
-}
-
-.btn__card-cross {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-
-  width: 21px;
-  height: 21px;
-
-  background-image: url('../../images/card-cross.svg');
-  background-size: 21px 21px;
-  background-position: center;
-
-  border: none;
-  background-color: transparent;
-}
-
-.btn__card-save {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  height: 100%;
-  width: 100%;
-
-  background-color: transparent;
-  color: transparent;
-
-  border: none;
-}
-
-.btn__card-save:hover {
-  position: absolute;
-  top: 14px;
-  left: 218px;
-  
-
-  height: 21px;
-  width: 72px;
-
-  padding: 6px 7px;
-
-  border-radius: 30px;
-  background-color: #313131;
-  border: none;
-
-  color: #fff;
-  font-size: 10px;
-  font-weight: 400;
-  line-height: 90%;
 }
 
 @media screen and (min-width: 768px) {
@@ -348,44 +216,10 @@
     font-size: 14px;
   }
 
-  .link__sidebar {
-    line-height: 140%;
-  }
-
-  .link__not-found {
-    position: absolute;
-    
-    bottom: 222px;
-  }
-
-  .btn__auth {
+  .auth__btn {
     width: 396px;
 
     font-size: 14px;
-  }
-
-  .btn__profile-save {
-    font-size: 14px;
-  }
-
-  .btn__account {
-    display: none;
-  }
-
-  .btn__sidebar-account {
-    margin-top: 621px;
-    margin-bottom: 90px;
-  }
-
-  .btn__header-menu {
-    display: block;
-
-    height: 44px;
-    width: 44px;
-  }
-
-  .btn__card-save:hover {
-    left: 256px;
   }
 }
 
@@ -397,22 +231,6 @@
 
   .auth__title {
     padding-top: 40px;
-  }
-
-  .link__not-found {
-    bottom: 60px;
-  }
-
-  .btn__account {
-    display: block;
-  }
-
-  .btn__header-menu {
-    display: none;
-  }
-
-  .btn__card-save:hover {
-    left: 274px;
   }
 }
 

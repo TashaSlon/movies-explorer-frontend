@@ -45,7 +45,7 @@ const Movies = (props) => {
     return (
         <>
             <Header loggedIn={props.loggedIn} signOut={props.signOut}/>
-            <main>
+            <main className="movies">
                 <SearchForm 
                 cinemaCheckbox = {props.cinemaCheckbox}
                 onCheckboxClick={props.onCheckboxClick}/>

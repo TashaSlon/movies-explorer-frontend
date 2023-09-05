@@ -29,7 +29,7 @@ const SavedMovies = (props) => {
     return (
         <>
             <Header loggedIn={props.loggedIn} signOut={props.signOut}/>
-            <main>
+            <main className="saved-movies">
                 <SearchForm cinemaCheckbox = {props.cinemaCheckbox}
                 onCheckboxClick={props.onCheckboxClick}/>
                 <MoviesCardList list={list} page='saved-movies'/>

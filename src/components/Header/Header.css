@@ -78,6 +78,61 @@ padding: 5px 12px;
   border: none;
 }
 
+.header__account {
+    display: none;
+  
+    padding: 8px 20px;
+  
+    border-radius: 20px;
+    background-color: #313131;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 114.3%;
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.header__account:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.header__btn-menu {
+    display: block;
+  
+    height: 40px;
+    width: 44px;
+    background-image: url('../../images/menu.svg');
+    background-size: cover;
+    background-color: transparent;
+    background-position: 0 -2px;
+    border: none;
+}
+
+.header__sidebar-link {
+    padding-top: 24px;
+
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 120%;
+}
+
+.header__sidebar-account {
+    margin-top: 444px;
+    margin-bottom: 46px;
+    padding: 8px 20px;
+
+    border-radius: 20px;
+    background-color: #313131;
+
+    color: #fff;
+    font-size: 14px;
+    line-height: 114.3%;
+    font-weight: 500;
+}
+
 @media screen and (min-width: 768px) {
     .header {
         padding: 18px 30px;
@@ -107,7 +162,27 @@ padding: 5px 12px;
     
         font-size: 12px;
         line-height: 133%;
-      }
+    }
+
+    .header__account {
+        display: none;
+    }
+
+    .header__btn-menu {
+        display: block;
+    
+        height: 44px;
+        width: 44px;
+    }
+
+    .header__sidebar-link {
+        line-height: 140%;
+    }
+
+    .header__sidebar-account {
+        margin-top: 621px;
+        margin-bottom: 90px;
+    }
 }
 
 @media screen and (min-width: 1280px) {
@@ -118,6 +193,14 @@ padding: 5px 12px;
 
     .header__nav {
         display: flex;
+    }
+
+    .header__account {
+        display: block;
+    }
+
+    .header__btn-menu {
+        display: none;
     }
 }
   

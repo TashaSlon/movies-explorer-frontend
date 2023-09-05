@@ -45,10 +45,10 @@ const Login = (props) => {
                         </label>
                     </div>
                     <div className="auth__button-container auth__button-container-signin">
-                        <button type="submit" onSubmit={handleSubmit} className="btn btn__auth">Войти</button>
+                        <button type="submit" onSubmit={handleSubmit} className="btn auth__btn">Войти</button>
                         <div className="auth__signin">
                             <p className="auth__signin-text">Ещё не зарегистрированы?</p>
-                            <Link to="/sign-up" className="link link__login">Регистрация</Link>
+                            <Link to="/sign-up" className="link auth__link">Регистрация</Link>
                         </div>
                     </div>
                 </form>
