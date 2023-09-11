@@ -15,6 +15,16 @@
     
 }
 
+.movies__zero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-top: 50px;
+
+    font-size: 14px;
+}
+
 @media screen and (min-width: 768px) {
     .movies__btn {
         min-width: 320px;

@@ -19,6 +19,9 @@
     align-items: center;
 
     padding-top: 16px;
+    box-sizing: border-box;
+
+    width: 300px;
 }
 
 .movies-card__name {
@@ -37,6 +40,10 @@
 }
 
 .movies-card__time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     margin: 0;
 
     padding: 3px 8px;
@@ -114,6 +121,11 @@
     line-height: 90%;
 }
 
+.movies-card__link {
+    color: #fff;
+    text-decoration: none;
+}
+
 @media screen and (min-width: 768px) {
     .movies-card__image {
         width: 339px;
@@ -126,6 +138,8 @@
 
     .movies-card__info {
         padding-top: 24px;
+
+        width: 339px;
     }
 
     .movies-card__save:hover {
@@ -148,6 +162,8 @@
 
     .movies-card__info {
         padding: 14px 13px 0;
+
+        width: 360px;
     }
 
     .movies-card__save:hover {

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Header from '../Header/Header';
-import { api } from '../../utils/api.js';
+import { api } from '../../utils/MainApi';
 
 const Profile = (props) => {
     let { name, email } = props.user;

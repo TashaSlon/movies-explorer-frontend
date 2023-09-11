@@ -1,56 +1,49 @@
+import { useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import Preloader from '../Preloader/Preloader';
+import { api } from '../../utils/MainApi';
 
 const Movies = (props) => {
-    const list = [
-        {
-            id: 1,
-            image: 'https://api.nomoreparties.co/uploads/thumbnail_552242179_1280x720_66bc43b289.jpeg',
-            name: 'Pulp: фильм о жизни, смерти и супермаркетах',
-            time: '1ч 30м',
-            saved: true,
-        },
-        {
-            id: 2,
-            image: 'https://api.nomoreparties.co/uploads/thumbnail_Super_Duper_Alice_Cooper_2014_8b1641fbaf.jpeg',
-            name: 'Супер-пупер Элис Купер',
-            time: '1ч 38м',
-            saved: false,
-        },
-        {
-            id: 3,
-            image: 'https://api.nomoreparties.co/uploads/thumbnail_orig_bc3e53efa8.jpeg',
-            name: 'Еще',
-            time: '1ч 36м',
-            saved: true,
-        },
-        {
-            id: 4,
-            image: 'https://api.nomoreparties.co/uploads/thumbnail_zagruzhennoe_1_1817cd23a2.jpeg',
-            name: 'The National: Приняты за незнакомцев',
-            time: '1ч 15м',
-            saved: false,
-        },
-        {
-            id: 5,
-            image: 'https://api.nomoreparties.co/uploads/thumbnail_zagruzhennoe_2_c709860078.jpeg',
-            name: 'Панк-певица',
-            time: '1ч 21м',
-            saved: true,
-        }
-    ];
+    const [isResult, setIsResult] = useState(false);
+
+    const [savedMovies, setSavedMovies] = useState(JSON.parse(localStorage.getItem('savedMovies')));
+    const fullList = JSON.parse(localStorage.getItem('fullList'));
+    const list = JSON.parse(localStorage.getItem('searchResults'));
+
+    function handleCardLike(id) {
+
+        const resultFilter = fullList.find((item) => {
+            return item.id === id
+        });
+
+        api.likeMovie(resultFilter)
+        .then((newCard) => {
+            const savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
+            savedMovies.push(newCard);
+            setSavedMovies(savedMovies);
+            localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
+        })
+        .catch(err => console.log(`Ошибка.....: ${err}`))
+    }
+
+    function showResult() {
+        setIsResult(!isResult);
+    }
 
     return (
         <>
             <Header loggedIn={props.loggedIn} signOut={props.signOut}/>
             <main className="movies">
-                <SearchForm 
-                cinemaCheckbox = {props.cinemaCheckbox}
-                onCheckboxClick={props.onCheckboxClick}/>
-                <MoviesCardList list={list} page='movies'/>
-                <button className='movies__btn btn'>Ещё</button>
+                <SearchForm
+                list={fullList}
+                showResult={showResult}/>
+                { list.length === 0 ? 
+                     <div className="movies__zero">Ничего не найдено</div>
+                     : <MoviesCardList list={list} page='movies' onCardLike={handleCardLike}/>
+                }
             </main>
             <Footer />
         </>

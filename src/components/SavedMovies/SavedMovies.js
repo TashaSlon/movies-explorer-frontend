@@ -2,37 +2,32 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import { api } from '../../utils/MainApi';
+import { useEffect, useState } from 'react';
 
 const SavedMovies = (props) => {
+    const [savedMovies, setSavedMovies] = useState(JSON.parse(localStorage.getItem('savedMovies')));
 
-    const list = [
-        {
-            id: 1,
-            image: 'https://api.nomoreparties.co/uploads/thumbnail_552242179_1280x720_66bc43b289.jpeg',
-            name: 'Pulp: фильм о жизни, смерти и супермаркетах',
-            time: '1ч 30м',
-        },
-        {
-            id: 2,
-            image: 'https://api.nomoreparties.co/uploads/thumbnail_orig_bc3e53efa8.jpeg',
-            name: 'Еще',
-            time: '1ч 36м',
-        },
-        {
-            id: 3,
-            image: 'https://api.nomoreparties.co/uploads/thumbnail_zagruzhennoe_2_c709860078.jpeg',
-            name: 'Панк-певица',
-            time: '1ч 21м',
-        }
-    ];
+    function handleCardDisLike(id) {
+        console.log(id);
+        api.dislikeMovie(id)
+        .then((movie) => {
+            const result = savedMovies.filter((item) => item._id !== movie._id);
+            
+            localStorage.setItem('savedMovies', JSON.stringify(result));
+            setSavedMovies(result);
+        })
+        .catch(err => console.log(`Ошибка.....: ${err}`))
+    };
 
     return (
         <>
             <Header loggedIn={props.loggedIn} signOut={props.signOut}/>
             <main className="saved-movies">
-                <SearchForm cinemaCheckbox = {props.cinemaCheckbox}
-                onCheckboxClick={props.onCheckboxClick}/>
-                <MoviesCardList list={list} page='saved-movies'/>
+                <SearchForm
+                    list={savedMovies}
+                    />
+                <MoviesCardList list={savedMovies} page='saved-movies' onCardDislike={handleCardDisLike} />
             </main>
             <Footer />
         </>

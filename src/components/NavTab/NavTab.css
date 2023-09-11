@@ -9,6 +9,7 @@
 }
 
 .menu__btn {
+    display: block;
     padding: 5px 0;
     
     width: 82px;
