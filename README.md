@@ -1,7 +1,9 @@
 # Project by Natalya Plyusnina
 
 [GitHub repository](https://github.com/TashaSlon/movies-explorer-frontend) \
-[Design - dark-2](https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/light-1?type=design&node-id=1-7266&mode=dev)
+[Design - dark-2](https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/light-1?type=design&node-id=1-7266&mode=dev) \
+[Pull request](https://github.com/TashaSlon/movies-explorer-frontend/pull/2) \
+[Server](https://api.plyusnina.nomoreparties.sbs/)
 
 ## Available Scripts
 
