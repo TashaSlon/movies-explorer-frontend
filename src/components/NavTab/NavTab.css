@@ -1,0 +1,44 @@
+.menu {
+    display: flex;
+    gap: 6px;
+
+    margin: 0 auto;
+    padding: 0;
+
+    list-style: none;
+}
+
+.menu__btn {
+    padding: 5px 0;
+    
+    width: 82px;
+    
+    border-radius: 6px;
+    background: #303030;
+    
+    color: #fff;
+    font-size: 10px;
+    line-height: 16px;
+    border: none;
+}
+
+@media screen and (min-width: 768px) {
+    .menu {
+        gap: 10px;
+    }
+
+    .menu__btn {
+        padding: 10px 0;
+    
+        width: 96px;
+        box-sizing: border-box;
+    
+        border-radius: 10px;
+        background: #303030;
+    
+        font-size: 12px;
+        line-height: 133%;
+        color: #fff;
+        text-decoration: none;
+      }
+}

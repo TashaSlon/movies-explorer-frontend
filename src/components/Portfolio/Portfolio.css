@@ -1,0 +1,132 @@
+.portfolio {
+    z-index: -1;
+
+    max-width: 1140px;
+
+    margin: 0 auto;
+    padding: 0 14px 70px;
+}
+
+.portfolio__title {
+    margin: 0;
+
+    color: #A0A0A0;
+    font-size: 14px;
+    line-height: 142.857%;
+    font-weight: 400;
+}
+
+.portfolio__list {
+    margin: 0;
+    padding: 20px 0 0;
+    list-style: none;
+}
+
+.portfolio__list-item {
+    padding-top: 20px;
+
+    font-size: 18px;
+    line-height: 155.556%;
+    letter-spacing: -0.72px;
+}
+
+.portfolio__link {
+    display: flex;
+    justify-content: space-between;
+
+    color: #fff;
+    text-decoration: none;
+}
+
+.portfolio__link:hover {
+    opacity: 0.7;
+}
+
+.portfolio__divider {
+    padding-bottom: 19px;
+    border-bottom: 1px solid #E6E6E6;
+}
+
+.portfolio__text {
+    position: relative;
+    width: 100%;
+}
+
+.portfolio__text::after {
+    position: absolute;
+    top: 7px;
+    right: 4px;
+
+    display: inline-block;
+
+    content: '';
+    width: 11px;
+    height: 11px;
+    background-image: url('../../images/arrow.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.portfolio__arrow {
+    width: 14px;
+}
+
+@media screen and (min-width: 768px) {
+    .portfolio {
+        padding: 0 50px 71px;
+    }
+
+    .portfolio__title {
+        font-size: 18px;
+        line-height: 111.111%;
+    }
+
+    .portfolio__list {
+        padding-top: 30px;
+    }
+
+    .portfolio__list-item {
+        padding-top: 20px;
+        padding-bottom: 19px;
+
+        font-size: 28px;
+        line-height: 178.571%;
+        letter-spacing: -1.12px;
+    }
+
+    .portfolio__text::after {
+        top: 18px;
+        width: 20px;
+        height: 20px;
+        background-size: cover;
+    }
+
+    .portfolio__arrow {
+        width: 20px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .portfolio {
+        padding: 0 70px 106px;
+    }
+
+    .portfolio__list-item {
+        padding-top: 20px;
+        padding-bottom: 19px;
+
+        font-size: 30px;
+        line-height: 166.667%;
+        letter-spacing: -1.2px;
+    }
+
+    .portfolio__text::after {
+        width: 18px;
+        height: 18px;
+    }
+
+    .portfolio__arrow {
+        width: 22px;
+    }
+}

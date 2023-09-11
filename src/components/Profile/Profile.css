@@ -1,0 +1,167 @@
+.profile__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+
+    margin: 0 auto;
+    padding: 68px 30px 38px;
+}
+
+.profile__title {
+    margin: 0 auto;
+
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.profile__fieldset {
+    width: 260px;
+
+    margin: 0 auto;
+    padding-top: 58px;
+}
+
+.profile__fieldset_disabled {
+    display: none;
+}
+
+.profile__field {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 16px 0;
+
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.profile__name {
+    font-weight: 400;
+}
+
+.profile__field-border {
+    border-bottom: 1px solid #424242;
+}
+
+.profile__button-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   
+
+    padding-top: 363px;
+}
+
+.profile__button-group_disabled {
+    display: none;
+}
+
+.profile__input {
+    padding: 0;
+
+    color: #fff;
+    text-align: right;
+    background-color: transparent;
+    border: none;
+}
+
+.profile__input::placeholder {
+    color: #fff;
+}
+
+.profile__button {
+    display: block;
+
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.profile__button-accent {
+    padding-top: 16px;
+
+    color: #EE3465;
+}
+
+.profile__error {
+    display: block;
+
+    height: 14px;
+
+    margin: 189px auto 0;
+
+    color: #FF004C;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 400;
+}
+
+.profile__btn-save {
+    width: 100%;
+    max-width: 410px;
+  
+    margin: 20px auto 0;
+    padding: 13px 15px 15px;
+  
+    border-radius: 3px;
+    background-color: #4285F4;
+    font-size: 12px;
+    color: #fff;
+    border: none;
+}
+
+@media screen and (min-width: 768px) {
+    .profile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        height: 86vh;
+    }
+
+    .profile__fieldset {
+        width: 410px;
+
+        padding-top: 75px;
+    }
+
+    .profile__button-group {
+        padding-top: 193px;
+    }
+
+    .profile__btn-save {
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .profile {
+        height: 90vh;
+    }
+
+    .profile__content {
+        padding: 20px 70px;
+    }
+
+    .profile__title {
+        font-size: 24px;
+    }
+
+    .profile__fieldset {
+        padding-top: 103px;
+    }
+
+    .profile__button-group {
+        padding-top: 204px;
+    }
+
+    .profile__button {
+        font-size: 13px;
+    }
+}
