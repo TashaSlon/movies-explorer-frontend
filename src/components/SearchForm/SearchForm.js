@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
 
-const SearchForm = ({list, showResult }) => {
+const SearchForm = ({list, showResult, page }) => {
+    const params = (page ==='movies')
+                    ? {formValue: 'formValue', searchResults: 'searchResults'}
+                    : {formValue: 'formValueForSaved', searchResults: 'searchResultsForSaved'};
     const [searchResults, setSearchResults] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [isResult, setIsResult] = useState(false);
-    const [formValue, setFormValue] = useState(JSON.parse(localStorage.getItem('formValue')));
+    const [formValue, setFormValue] = useState(JSON.parse(localStorage.getItem(params.formValue)));
 
     useEffect(() => {
-        localStorage.setItem('formValue', JSON.stringify(formValue));
+        localStorage.setItem(params.formValue, JSON.stringify(formValue));
     }, [formValue]);
 
 
@@ -33,7 +36,6 @@ const SearchForm = ({list, showResult }) => {
     }
 
     const handleSubmit = (e) => {
-    
         e.preventDefault();
         setIsLoading(true);
         const error = document.querySelector('.search__error');
@@ -58,16 +60,15 @@ const SearchForm = ({list, showResult }) => {
         });
 
         const results = shortFilms ? resultsFilter.filter((item) => item.duration <= 40) : resultsFilter;
-        console.log(results);
+        
         setSearchResults(results);
         setIsResult(true);
         setIsLoading(false);
 
-        localStorage.setItem('formValue', JSON.stringify(formValue));
-        localStorage.setItem('searchResults', JSON.stringify(results));
+        localStorage.setItem(params.formValue, JSON.stringify(formValue));
+        localStorage.setItem(params.searchResults, JSON.stringify(results));
 
         showResult();
-
         error.textContent = "";
     }
 

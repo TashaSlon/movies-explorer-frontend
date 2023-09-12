@@ -39,7 +39,8 @@ const Movies = (props) => {
             <main className="movies">
                 <SearchForm
                 list={fullList}
-                showResult={showResult}/>
+                showResult={showResult}
+                page='movies'/>
                 { list.length === 0 ? 
                      <div className="movies__zero">Ничего не найдено</div>
                      : <MoviesCardList list={list} page='movies' onCardLike={handleCardLike}/>

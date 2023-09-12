@@ -6,10 +6,12 @@ import { api } from '../../utils/MainApi';
 import { useEffect, useState } from 'react';
 
 const SavedMovies = (props) => {
+    const [isResult, setIsResult] = useState(false);
     const [savedMovies, setSavedMovies] = useState(JSON.parse(localStorage.getItem('savedMovies')));
+    const list = JSON.parse(localStorage.getItem('searchResultsForSaved'));
+    localStorage.setItem('formValueForSaved', JSON.stringify({keyword: '', shortFillms: true }));
 
     function handleCardDisLike(id) {
-        console.log(id);
         api.dislikeMovie(id)
         .then((movie) => {
             const result = savedMovies.filter((item) => item._id !== movie._id);
@@ -20,14 +22,22 @@ const SavedMovies = (props) => {
         .catch(err => console.log(`Ошибка.....: ${err}`))
     };
 
+    function showResult() {
+        setIsResult(!isResult);
+    }
+
     return (
         <>
             <Header loggedIn={props.loggedIn} signOut={props.signOut}/>
             <main className="saved-movies">
                 <SearchForm
                     list={savedMovies}
-                    />
-                <MoviesCardList list={savedMovies} page='saved-movies' onCardDislike={handleCardDisLike} />
+                    showResult={showResult}
+                    page='saved-movies'/>
+                { list.length === 0 ? 
+                     <div className="movies__zero">Ничего не найдено</div>
+                    : <MoviesCardList list={list} page='saved-movies' onCardDislike={handleCardDisLike} />
+                }
             </main>
             <Footer />
         </>

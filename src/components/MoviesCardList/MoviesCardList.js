@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
 const MoviesCardList = (props) => {
-    const list = (props.page === 'movies') ? props.list : JSON.parse(localStorage.getItem('savedMovies'));
-    console.log(list);
+    const list = props.list;
+
     const width = document.documentElement.clientWidth;
     const startParams = (width < 768) 
                         ? {maxCards: 5, addCards: 2}
@@ -17,7 +17,7 @@ const MoviesCardList = (props) => {
 
     useEffect(() => {
         setParams(startParams);
-    }, [list]);
+    }, []);
 
     const getFilmList = films => {
         let content = [];

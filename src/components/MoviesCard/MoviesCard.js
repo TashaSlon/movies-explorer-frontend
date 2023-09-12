@@ -1,14 +1,12 @@
 import { Link } from 'react-router-dom';
 
 const MoviesCard = (props) => {
-    console.log(props.movie);
     const savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
     const MOVIE_URL = 'https://api.nomoreparties.co/';
     const id = (props.page === 'saved-movies') ? props.movie.movieId : props.movie.id;
     const name = props.movie.nameRU;
     const image = MOVIE_URL + (props.page === 'saved-movies'? props.movie.image : props.movie.image.url);
     const trailer = props.movie.trailerLink;
-
     
     const getDuration = (duration) => {
         const hours = Math.floor(duration / 60);

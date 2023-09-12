@@ -55,6 +55,7 @@ function App() {
             let savedMovies = [];
             movies.forEach(movie => savedMovies.push(movie));
             localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
+            localStorage.setItem('searchResultsForSaved', JSON.stringify(savedMovies));
         })
         .catch(err => console.log(`Ошибка.....: ${err}`));
     },[loggedIn]);
@@ -161,7 +162,7 @@ function App() {
           />}  />
           <Route path="/profile"
           element={<ProtectedRouteElement
-          element={Main} 
+          element={Profile} 
           user={userData} 
           signOut = {signOut}
           loggedIn={loggedIn}/>} />
