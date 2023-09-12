@@ -11,7 +11,7 @@ import Profile from '../Profile/Profile';
 import NotFound from '../NotFound/NotFound';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute';
-import { authorize, register, logout } from '../../utils/Auth';
+import { authorize, register, logout } from '../../utils/auth.js';
 import { api } from '../../utils/MainApi';
 import { getMovies } from '../../utils/MoviesApi';
 
