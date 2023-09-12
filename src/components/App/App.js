@@ -9,6 +9,7 @@ import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import NotFound from '../NotFound/NotFound';
+import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute';
 import { authorize, register, logout } from '../../utils/Auth';
 import { api } from '../../utils/MainApi';
@@ -50,34 +51,44 @@ function App() {
     }},[loggedIn]);
 
     useEffect(() => {
-      api.getMovies()
-        .then(movies => {
-            let savedMovies = [];
-            movies.forEach(movie => savedMovies.push(movie));
-            localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
-            localStorage.setItem('searchResultsForSaved', JSON.stringify(savedMovies));
-        })
-        .catch(err => console.log(`Ошибка.....: ${err}`));
-    },[loggedIn]);
+      if (loggedIn){
+          api.getMovies()
+            .then(movies => {
+                let savedMovies = [];
+                movies.forEach(movie => savedMovies.push(movie));
+                localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
+                localStorage.setItem('searchResultsForSaved', JSON.stringify(savedMovies));
+            })
+            .catch(err => {
+              localStorage.setItem('savedMovies', JSON.stringify([]));
+              localStorage.setItem('searchResultsForSaved', JSON.stringify([]));
+              console.log(`Ошибка.....: ${err}`)
+            });
+      }},[loggedIn]);
     
 
     useEffect(() => {
-      getMovies()
-            .then(movies => {
-                let fullList =[];
-                movies.forEach(movie => {
-                    fullList.push(movie);
-                });
-                localStorage.setItem('fullList', JSON.stringify(fullList));
-            })
-            .catch(err => console.log(`Ошибка.....: ${err}`));
-    },[loggedIn]);
+      if (loggedIn){
+        getMovies()
+              .then(movies => {
+                  let fullList =[];
+                  movies.forEach(movie => {
+                      fullList.push(movie);
+                  });
+                  localStorage.setItem('fullList', JSON.stringify(fullList));
+              })
+              .catch(err => console.log(`Ошибка.....: ${err}`));
+    }},[loggedIn]);
 
   function handleInfoTooltipClick(res) {
-    if(res.data) {
+    if(res.name) {
       setStatus(true);
     }
     setIsInfoTooltipOpen(true);
+  };
+
+  function closeAllPopups() {
+    setIsInfoTooltipOpen(false);
   };
 
   function handleLogin(password, email) {
@@ -93,8 +104,8 @@ function App() {
       });
   }
 
-  function handleRegister(password, email) {
-    register(password, email)
+  function handleRegister(name, password, email) {
+    register(name, email, password)
     .then((res) => {
         handleInfoTooltipClick(res);
         navigate('/sign-in', {replace: true});
@@ -167,8 +178,9 @@ function App() {
           signOut = {signOut}
           loggedIn={loggedIn}/>} />
           <Route path="/404" element= {<NotFound />} />
-          {/*<Route path="/" element={loggedIn ? <Navigate to="/" replace /> : <Navigate to="/sign-in" replace />} /> */}
+          <Route path="/" element={loggedIn ? <Navigate to="/404" replace /> : <Navigate to="/sign-in" replace />} />
         </Routes>
+        <InfoTooltip isOpen={isInfoTooltipOpen} onClose={closeAllPopups} status={status}/>
       </div>
     </CurrentUserContext.Provider>
   );

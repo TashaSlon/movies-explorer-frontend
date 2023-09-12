@@ -3,7 +3,7 @@ import Footer from '../Footer/Footer';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import { api } from '../../utils/MainApi';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const SavedMovies = (props) => {
     const [isResult, setIsResult] = useState(false);
@@ -15,7 +15,6 @@ const SavedMovies = (props) => {
         api.dislikeMovie(id)
         .then((movie) => {
             const result = savedMovies.filter((item) => item._id !== movie._id);
-            
             localStorage.setItem('savedMovies', JSON.stringify(result));
             setSavedMovies(result);
         })
@@ -36,7 +35,7 @@ const SavedMovies = (props) => {
                     page='saved-movies'/>
                 { list.length === 0 ? 
                      <div className="movies__zero">Ничего не найдено</div>
-                    : <MoviesCardList list={list} page='saved-movies' onCardDislike={handleCardDisLike} />
+                    : <MoviesCardList list={savedMovies} page='saved-movies' onCardDislike={handleCardDisLike} />
                 }
             </main>
             <Footer />

@@ -27,6 +27,10 @@ const Profile = (props) => {
         setFormValue({name, email});
     }
 
+    function handleLogout() {
+        props.signOut();
+    }
+
     function handleSubmit(e) {
         e.preventDefault();
         
@@ -74,7 +78,7 @@ const Profile = (props) => {
                         </div>
                         <div className="profile__button-group">
                             <button className="btn profile__button" onClick={handleEdit}>Редактировать</button>
-                            <button className="btn profile__button profile__button-accent">Выйти из аккаунта</button>
+                            <button className="btn profile__button profile__button-accent" onClick={handleLogout}>Выйти из аккаунта</button>
                         </div>
                     </div>
                     <form onSubmit={handleSubmit} className="profile__fieldset profile__fieldset_disabled">

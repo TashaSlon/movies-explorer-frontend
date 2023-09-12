@@ -7,6 +7,7 @@ class Api {
   
     _getHeaders() {
       return {
+        "Accept": "application/json",
         "Content-Type": "application/json",
       };
     }
@@ -40,6 +41,15 @@ class Api {
       })
       .then(this._getJson);
     }
+
+    logout() {
+      return fetch(`${this._baseUrl}/signout`, {
+        headers: this._getHeaders(),
+        credentials: 'include',
+        method: 'GET'
+      })
+      .then(this._getJson);
+    };
   
     getMovies() {
       return fetch(`${this._baseUrl}/movies`, {

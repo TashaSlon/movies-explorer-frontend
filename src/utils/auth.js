@@ -1,6 +1,4 @@
-
 const { BASE_URL } = require("./MainApi");
-
 
 function getJson(res) {
   if (res.ok) {
@@ -9,15 +7,17 @@ function getJson(res) {
   return Promise.reject(`Ошибка: ${res.status}`);
 }
 
-export const register = (password, email) => {
+export const register = (name, email, password) => {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     credentials: 'include',
-    body: JSON.stringify({"password": password,
-    "email": email })
+    body: JSON.stringify({
+    "name": name,
+    "email": email,
+    "password": password, })
   })
   .then(getJson);
 };

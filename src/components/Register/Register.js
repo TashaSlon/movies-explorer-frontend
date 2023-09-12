@@ -4,6 +4,7 @@ import Logo from '../Logo/Logo';
 
 const Register = (props) => {
     const [formValue, setFormValue] = useState({
+        name: '',
         email: '',
         password: ''
     })
@@ -17,10 +18,10 @@ const Register = (props) => {
         });
     }
     const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    const { password, email } = formValue;
-        props.onRegister(password, email);
+        e.preventDefault();
+
+        const { name, password, email } = formValue;
+            props.onRegister(name, password, email);
     }
 
     return (
