@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 
 const SearchForm = ({list, page, handleResult }) => {
-    
-    const [isLoading, setIsLoading] = useState(false);
-    const [isChecked, setIsChecked] = useState(true);
-
     const startFormValue = page ==='movies'
                             ? JSON.parse(localStorage.getItem('formValue'))
                             : { keyword: '', shortFilms: true };
+    
+    const [isLoading, setIsLoading] = useState(false);
+    const [isChecked, setIsChecked] = useState(startFormValue.shortFilms);
     
     const [formValue, setFormValue] = useState(startFormValue);
 
@@ -60,13 +59,12 @@ const SearchForm = ({list, page, handleResult }) => {
         });
 
         const results = shortFilms ? resultsFilter.filter((item) => item.duration <= 40) : resultsFilter;
-        console.log(results);
-        
-        handleResult(results);
-        setIsLoading(false);
 
         localStorage.setItem('formValue', JSON.stringify(formValue));
         localStorage.setItem('searchResults', JSON.stringify(results));
+
+        handleResult(results);
+        setIsLoading(false);
 
         error.textContent = "";
     }

@@ -26,7 +26,7 @@ const MoviesCardList = (props) => {
         let content = [];
 
         for (let i = 0; i < cards; i++) {
-          content.push(<MoviesCard movie={films[i]} page={props.page} onCardLike={props.onCardLike} onCardDislike={props.onCardDislike}/>);
+          content.push(<MoviesCard movie={films[i]} page={props.page} handleResult={props.handleResult}/>);
         }
         return content;
     };

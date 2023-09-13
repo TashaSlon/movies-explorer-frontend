@@ -66,12 +66,12 @@ class Api {
         duration: props.duration,
         year: props.year,
         description: props.description,
-        image: props.image.url,
+        image: props.image,
         trailerLink: props.trailerLink,
         nameRU: props.nameRU,
         nameEN: props.nameEN,
         thumbnail: props.thumbnail,
-        movieId: props.id.toString(),
+        movieId: String(props.movieId),
       };
       return fetch(`${this._baseUrl}/movies`, {
         method: 'POST',
