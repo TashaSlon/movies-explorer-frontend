@@ -6,10 +6,8 @@ import { api } from '../../utils/MainApi';
 import { useState } from 'react';
 
 const SavedMovies = (props) => {
-    const [isResult, setIsResult] = useState(false);
     const [savedMovies, setSavedMovies] = useState(JSON.parse(localStorage.getItem('savedMovies')));
-    const list = JSON.parse(localStorage.getItem('searchResultsForSaved'));
-    localStorage.setItem('formValueForSaved', JSON.stringify({keyword: '', shortFillms: true }));
+    const [searchResults, setSearchResults] = useState(savedMovies);
 
     function handleCardDisLike(id) {
         api.dislikeMovie(id)
@@ -21,8 +19,8 @@ const SavedMovies = (props) => {
         .catch(err => console.log(`Ошибка.....: ${err}`))
     };
 
-    function showResult() {
-        setIsResult(!isResult);
+    function handleResult(result) {
+        setSearchResults(result);
     }
 
     return (
@@ -31,11 +29,11 @@ const SavedMovies = (props) => {
             <main className="saved-movies">
                 <SearchForm
                     list={savedMovies}
-                    showResult={showResult}
-                    page='saved-movies'/>
-                { list.length === 0 ? 
+                    page='saved-movies'
+                    handleResult={handleResult}/>
+                { searchResults.length === 0 ? 
                      <div className="movies__zero">Ничего не найдено</div>
-                    : <MoviesCardList list={savedMovies} page='saved-movies' onCardDislike={handleCardDisLike} />
+                    : <MoviesCardList list={searchResults} page='saved-movies' onCardDislike={handleCardDisLike} />
                 }
             </main>
             <Footer />

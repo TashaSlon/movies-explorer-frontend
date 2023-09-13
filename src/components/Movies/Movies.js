@@ -7,12 +7,11 @@ import Preloader from '../Preloader/Preloader';
 import { api } from '../../utils/MainApi';
 
 const Movies = (props) => {
-    const [isResult, setIsResult] = useState(false);
-
-    const [savedMovies, setSavedMovies] = useState(JSON.parse(localStorage.getItem('savedMovies')));
+    const search = JSON.parse(localStorage.getItem('searchResults'));
     const fullList = JSON.parse(localStorage.getItem('fullList'));
-    const list = JSON.parse(localStorage.getItem('searchResults'));
-
+    const [savedMovies, setSavedMovies] = useState(JSON.parse(localStorage.getItem('savedMovies')));
+    const [searchResults, setSearchResults] = useState((search.length === 0) ? fullList : search);
+    
     function handleCardLike(id) {
 
         const resultFilter = fullList.find((item) => {
@@ -29,8 +28,8 @@ const Movies = (props) => {
         .catch(err => console.log(`Ошибка.....: ${err}`))
     }
 
-    function showResult() {
-        setIsResult(!isResult);
+    function handleResult(result) {
+        setSearchResults(result);
     }
 
     return (
@@ -39,11 +38,11 @@ const Movies = (props) => {
             <main className="movies">
                 <SearchForm
                 list={fullList}
-                showResult={showResult}
-                page='movies'/>
-                { list.length === 0 ? 
+                page='movies'
+                handleResult={handleResult}/>
+                { searchResults.length === 0 ? 
                      <div className="movies__zero">Ничего не найдено</div>
-                     : <MoviesCardList list={list} page='movies' onCardLike={handleCardLike}/>
+                     : <MoviesCardList list={searchResults} page='movies' onCardLike={handleCardLike}/>
                 }
             </main>
             <Footer />

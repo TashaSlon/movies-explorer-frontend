@@ -4,20 +4,23 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 const MoviesCardList = (props) => {
     const list = props.list;
 
-    const width = document.documentElement.clientWidth;
-    const startParams = (width < 768) 
+    const getParams = () => {
+        const width = document.documentElement.clientWidth;
+        const startParams = (width <= 767) 
                         ? {maxCards: 5, addCards: 2}
-                        : (width < 1280) 
+                        : (width <= 1279) 
                             ? {maxCards: 8, addCards: 2}
                             : {maxCards: 12, addCards: 3};
 
-    const [params, setParams] = useState(startParams);
+        return startParams;
+    }
     
-    let cards = list.length < params.maxCards ? list.length : params.maxCards;
+    window.addEventListener('resize', function(event) {
+        setParams(getParams());
+    }, true);
 
-    useEffect(() => {
-        setParams(startParams);
-    }, []);
+    const [params, setParams] = useState(getParams());
+    let cards = list.length < params.maxCards ? list.length : params.maxCards;
 
     const getFilmList = films => {
         let content = [];

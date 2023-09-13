@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'react';
 
-const SearchForm = ({list, showResult, page }) => {
+const SearchForm = ({list, page, handleResult }) => {
     const params = (page ==='movies')
                     ? {formValue: 'formValue', searchResults: 'searchResults'}
                     : {formValue: 'formValueForSaved', searchResults: 'searchResultsForSaved'};
-    const [searchResults, setSearchResults] = useState([]);
+    
     const [isLoading, setIsLoading] = useState(false);
     const [isResult, setIsResult] = useState(false);
-    const [formValue, setFormValue] = useState(JSON.parse(localStorage.getItem(params.formValue)));
+
+    const startFormValue = page ==='movies'
+                            ? JSON.parse(localStorage.getItem(params.formValue))
+                            : { keyword: '', shortFilms: true };
+    const [formValue, setFormValue] = useState(startFormValue);
 
     useEffect(() => {
         localStorage.setItem(params.formValue, JSON.stringify(formValue));
@@ -33,6 +37,7 @@ const SearchForm = ({list, showResult, page }) => {
         });
         
         e.target.classList.toggle('search__new-radio_disabled');
+        handleSubmit();
     }
 
     const handleSubmit = (e) => {
@@ -60,15 +65,15 @@ const SearchForm = ({list, showResult, page }) => {
         });
 
         const results = shortFilms ? resultsFilter.filter((item) => item.duration <= 40) : resultsFilter;
+        console.log(results);
         
-        setSearchResults(results);
+        handleResult(results);
         setIsResult(true);
         setIsLoading(false);
 
         localStorage.setItem(params.formValue, JSON.stringify(formValue));
         localStorage.setItem(params.searchResults, JSON.stringify(results));
 
-        showResult();
         error.textContent = "";
     }
 
@@ -81,9 +86,9 @@ const SearchForm = ({list, showResult, page }) => {
                     <button className="btn search__btn" onSubmit={handleSubmit}></button>
                 </fieldset>
                 <div className="search__short-films">
-                    <div className={formValue.shortFilms ? "search__new-radio" : "search__new-radio search__new-radio_disabled"} onClick={handleShortFilms} ></div>
                     <label htmlFor="short-films">
-                        <input className="search__input-radio" type="radio" id="short-films" name="short-films" value={formValue.shortFilms} onChange={handleChange} checked />
+                        <div className={formValue.shortFilms ? "search__new-radio" : "search__new-radio search__new-radio_disabled"} onClick={handleShortFilms} ></div>
+                        <input className="search__input-checkbox" type="checkbox" id="short-films" name="short-films" value={formValue.shortFilms} onChange={handleChange} checked />
                         Короткометражки
                     </label>
                 </div>
