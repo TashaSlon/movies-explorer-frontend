@@ -1,48 +1,43 @@
 import { useEffect, useState } from 'react';
 
 const SearchForm = ({list, page, handleResult }) => {
-    const params = (page ==='movies')
-                    ? {formValue: 'formValue', searchResults: 'searchResults'}
-                    : {formValue: 'formValueForSaved', searchResults: 'searchResultsForSaved'};
     
     const [isLoading, setIsLoading] = useState(false);
-    const [isResult, setIsResult] = useState(false);
+    const [isChecked, setIsChecked] = useState(true);
 
     const startFormValue = page ==='movies'
-                            ? JSON.parse(localStorage.getItem(params.formValue))
+                            ? JSON.parse(localStorage.getItem('formValue'))
                             : { keyword: '', shortFilms: true };
+    
     const [formValue, setFormValue] = useState(startFormValue);
 
     useEffect(() => {
-        localStorage.setItem(params.formValue, JSON.stringify(formValue));
-    }, [formValue]);
-
-
-    const handleChange = (e) => {
-        const {name, value} = e.target;
-
-        setFormValue({
-            ...formValue,
-            [name]: value
-        });
-    }
-
-    const handleShortFilms = (e) => {
-        const isDisabled = e.target.classList.contains('search__new-radio_disabled');
-        const value = isDisabled ? true : false;
-
         setFormValue({
             keyword: formValue.keyword,
-            shortFilms: value
+            shortFilms: isChecked
         });
-        
-        e.target.classList.toggle('search__new-radio_disabled');
+    }, [isChecked]);
+
+    useEffect(() => {
         handleSubmit();
+    }, [formValue.shortFilms]);
+
+    const handleChange = (e) => {
+        const {value} = e.target;
+
+        setFormValue({
+            keyword: value,
+            shortFilms: isChecked
+        });
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleChangeShortFilms = (e) => {
+        setIsChecked(!isChecked);
+    }
+
+    const handleSubmit = () => {
         setIsLoading(true);
+        
         const error = document.querySelector('.search__error');
 
         if (!formValue.keyword) {
@@ -68,31 +63,28 @@ const SearchForm = ({list, page, handleResult }) => {
         console.log(results);
         
         handleResult(results);
-        setIsResult(true);
         setIsLoading(false);
 
-        localStorage.setItem(params.formValue, JSON.stringify(formValue));
-        localStorage.setItem(params.searchResults, JSON.stringify(results));
+        localStorage.setItem('formValue', JSON.stringify(formValue));
+        localStorage.setItem('searchResults', JSON.stringify(results));
 
         error.textContent = "";
     }
 
     return (
         <section className="search">
-            <form className="search__form" onSubmit={handleSubmit}>
+            <div className="search__form">
                 <fieldset className="search__block">
                     <input className="search__input" id="keyword" name="keyword" type="text" placeholder="Фильм" onChange={handleChange} value={formValue.keyword}></input>
                     <div className="error search__error"></div>
-                    <button className="btn search__btn" onSubmit={handleSubmit}></button>
+                    <button className="btn search__btn" onClick={handleSubmit}></button>
                 </fieldset>
-                <div className="search__short-films">
-                    <label htmlFor="short-films">
-                        <div className={formValue.shortFilms ? "search__new-radio" : "search__new-radio search__new-radio_disabled"} onClick={handleShortFilms} ></div>
-                        <input className="search__input-checkbox" type="checkbox" id="short-films" name="short-films" value={formValue.shortFilms} onChange={handleChange} checked />
-                        Короткометражки
-                    </label>
-                </div>
-            </form>
+                <label htmlFor="short-films" className="search__short-films">
+                    <input className="search__input-checkbox" type="checkbox" id="short-films" name="short-films" value={formValue.shortFilms} onChange={handleChangeShortFilms} checked />
+                    <span className={`search__new-radio ${isChecked ? "" : "search__new-radio_disabled"}`} aria-hidden="true"/>
+                    Короткометражки
+                </label>
+            </div>
         </section>
     );
 };

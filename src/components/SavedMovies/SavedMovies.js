@@ -14,7 +14,8 @@ const SavedMovies = (props) => {
         .then((movie) => {
             const result = savedMovies.filter((item) => item._id !== movie._id);
             localStorage.setItem('savedMovies', JSON.stringify(result));
-            setSavedMovies(result);
+
+            setSearchResults(result);
         })
         .catch(err => console.log(`Ошибка.....: ${err}`))
     };
