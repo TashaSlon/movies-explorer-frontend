@@ -54,14 +54,13 @@ function App() {
       if (loggedIn){
           api.getMovies()
             .then(movies => {
+                console.log(movies);
                 let savedMovies = [];
                 movies.forEach(movie => savedMovies.push(movie));
                 localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
-                localStorage.setItem('searchResultsForSaved', JSON.stringify(savedMovies));
             })
             .catch(err => {
               localStorage.setItem('savedMovies', JSON.stringify([]));
-              localStorage.setItem('searchResultsForSaved', JSON.stringify([]));
               console.log(`Ошибка.....: ${err}`)
             });
       }},[loggedIn]);
@@ -121,6 +120,9 @@ function App() {
     .then((res) => {
       setLoggedIn(false);
       navigate('/sign-in', {replace: true});
+      localStorage.removeItem('searchResults');
+      localStorage.removeItem('savedMovies');
+      localStorage.removeItem('formValue');
     })
     .catch(err => {
       setStatus(false);

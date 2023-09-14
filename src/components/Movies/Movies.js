@@ -8,7 +8,7 @@ import Preloader from '../Preloader/Preloader';
 const Movies = (props) => {
     const search = JSON.parse(localStorage.getItem('searchResults'));
     const fullList = JSON.parse(localStorage.getItem('fullList'));
-    const [searchResults, setSearchResults] = useState((search.length === 0) ? fullList : search);
+    const [searchResults, setSearchResults] = useState((search === null) ? fullList : search);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {

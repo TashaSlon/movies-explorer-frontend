@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 
 const SearchForm = ({list, page, handleResult }) => {
-    const startFormValue = page ==='movies'
-                            ? JSON.parse(localStorage.getItem('formValue'))
+    const formData = JSON.parse(localStorage.getItem('formValue'));
+    const startFormValue = (page ==='movies')&&(formData !== null)
+                            ? formData
                             : { keyword: '', shortFilms: true };
     
     const [isChecked, setIsChecked] = useState(startFormValue.shortFilms);
@@ -64,7 +65,7 @@ const SearchForm = ({list, page, handleResult }) => {
 
         error.textContent = "";
     }
-
+    
     return (
         <section className="search">
             <div className="search__form">
