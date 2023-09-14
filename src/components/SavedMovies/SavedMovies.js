@@ -2,11 +2,20 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import { useState } from 'react';
+import Preloader from '../Preloader/Preloader';
+import { useEffect, useState } from 'react';
 
 const SavedMovies = (props) => {
     const savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
     const [searchResults, setSearchResults] = useState(savedMovies);
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        setLoading(true);
+        setTimeout(() => {
+          setLoading(false);
+        }, 2000);
+    }, []);
 
     function handleResult(result) {
         setSearchResults(result);
@@ -20,7 +29,9 @@ const SavedMovies = (props) => {
                     list={savedMovies}
                     page='saved-movies'
                     handleResult={handleResult}/>
-                { searchResults.length === 0 ? 
+                {loading 
+                ? <Preloader />
+                : searchResults.length === 0 ? 
                      <div className="movies__zero">Ничего не найдено</div>
                     : <MoviesCardList list={searchResults} page='saved-movies' handleResult={handleResult} />
                 }

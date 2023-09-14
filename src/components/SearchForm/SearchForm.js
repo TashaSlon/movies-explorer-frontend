@@ -5,7 +5,6 @@ const SearchForm = ({list, page, handleResult }) => {
                             ? JSON.parse(localStorage.getItem('formValue'))
                             : { keyword: '', shortFilms: true };
     
-    const [isLoading, setIsLoading] = useState(false);
     const [isChecked, setIsChecked] = useState(startFormValue.shortFilms);
     
     const [formValue, setFormValue] = useState(startFormValue);
@@ -35,13 +34,11 @@ const SearchForm = ({list, page, handleResult }) => {
     }
 
     const handleSubmit = () => {
-        setIsLoading(true);
         
         const error = document.querySelector('.search__error');
 
         if (!formValue.keyword) {
             error.textContent = "Нужно ввести ключевое слово";
-            setIsLoading(false);
             return;
         }
         const { keyword, shortFilms } = formValue;
@@ -64,7 +61,6 @@ const SearchForm = ({list, page, handleResult }) => {
         localStorage.setItem('searchResults', JSON.stringify(results));
 
         handleResult(results);
-        setIsLoading(false);
 
         error.textContent = "";
     }
