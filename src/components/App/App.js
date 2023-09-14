@@ -123,6 +123,7 @@ function App() {
       localStorage.removeItem('searchResults');
       localStorage.removeItem('savedMovies');
       localStorage.removeItem('formValue');
+      document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     })
     .catch(err => {
       setStatus(false);
@@ -137,7 +138,6 @@ function App() {
       setCinemaCheckbox(true);
     }
   }
-
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
