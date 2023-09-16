@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import SearchForm from '../SearchForm/SearchForm';
@@ -6,22 +6,15 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 
 const Movies = (props) => {
-    const search = JSON.parse(localStorage.getItem('searchResults'));
-    const fullList = JSON.parse(localStorage.getItem('fullList'));
-    console.log(fullList);
-    const [searchResults, setSearchResults] = useState((search === null) ? fullList : search);
+    const [searchResults, setSearchResults] = useState(JSON.parse(localStorage.getItem('searchResults')));
     const [loading, setLoading] = useState(false);
+    console.log(JSON.parse(localStorage.getItem('searchResults')));
     console.log(searchResults);
 
-    useEffect(() => {
-        setLoading(true);
-        setTimeout(() => {
-          setLoading(false);
-        }, 2000);
-    }, []);
-
-    function handleResult() {
-        setSearchResults(JSON.parse(localStorage.getItem('searchResults')));
+    function handleResult(results) {
+       
+        const content = JSON.parse(localStorage.getItem('searchResults')); 
+        setSearchResults(content);
     }
 
     return (
@@ -29,15 +22,17 @@ const Movies = (props) => {
             <Header loggedIn={props.loggedIn} signOut={props.signOut}/>
             <main className="movies">
                 <SearchForm
-                list={fullList}
+                setLoading={setLoading}
                 page='movies'
                 handleResult={handleResult}/>
 
                 {loading 
                 ? <Preloader />
-                : searchResults.length === 0 ? 
-                     <div className="movies__zero">Ничего не найдено</div>
-                     : <MoviesCardList list={searchResults} page='movies' handleResult={handleResult}/>
+                : searchResults === null 
+                    ? <div></div>
+                    : searchResults.length === 0 ? 
+                        <div className="movies__zero">Ничего не найдено</div>
+                        : <MoviesCardList list={searchResults} page='movies' handleResult={handleResult}/>
                 }
             </main>
             <Footer />

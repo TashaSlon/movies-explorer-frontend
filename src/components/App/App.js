@@ -13,8 +13,6 @@ import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute';
 import { authorize, register, logout } from '../../utils/auth.js';
 import { api } from '../../utils/MainApi';
-import { getMovies } from '../../utils/MoviesApi';
-
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -24,7 +22,6 @@ function App() {
   });
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const [status, setStatus] = useState(false);
-  const [cinemaCheckbox, setCinemaCheckbox] = useState(true);
   const [currentUser, setCurrentUser] = useState({});
 
   const navigate = useNavigate();
@@ -34,7 +31,7 @@ function App() {
     .then((res) => {
       if (res){
         setLoggedIn(true);
-        navigate("/", {replace: true});
+        navigate("/movies", {replace: true});
       }
     })
     .catch(err => console.log(`Ошибка.....: ${err}`))
@@ -64,20 +61,6 @@ function App() {
               console.log(`Ошибка.....: ${err}`)
             });
       }},[loggedIn]);
-    
-
-    useEffect(() => {
-      if (loggedIn){
-        getMovies()
-              .then(movies => {
-                  let fullList =[];
-                  movies.forEach(movie => {
-                      fullList.push(movie);
-                  });
-                  localStorage.setItem('fullList', JSON.stringify(fullList));
-              })
-              .catch(err => console.log(`Ошибка.....: ${err}`));
-    }},[loggedIn]);
 
   function handleInfoTooltipClick(res) {
     if(res.name) {
@@ -107,7 +90,8 @@ function App() {
     register(name, email, password)
     .then((res) => {
         handleInfoTooltipClick(res);
-        navigate('/sign-in', {replace: true});
+        setLoggedIn(true);
+        navigate('/movies', {replace: true});
     })
     .catch(err => {
       setStatus(false);
@@ -123,7 +107,7 @@ function App() {
       localStorage.removeItem('searchResults');
       localStorage.removeItem('savedMovies');
       localStorage.removeItem('formValue');
-      document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      localStorage.removeItem('fullList');
     })
     .catch(err => {
       setStatus(false);
@@ -131,23 +115,12 @@ function App() {
     });
   }
 
-  function handleCheckboxClick() {
-    if (cinemaCheckbox) {
-      setCinemaCheckbox(false);
-    } else {
-      setCinemaCheckbox(true);
-    }
-  }
-
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <Routes>
           <Route path="/" 
-           element={<ProtectedRouteElement
-            element={Main}
-            signOut = {signOut}
-            loggedIn={loggedIn}/>} 
+           element={<Main/>}
           />
           <Route path="/sign-up" element={
             <div className="registerContainer">
@@ -159,28 +132,22 @@ function App() {
             </div>} />
           <Route path="/movies" 
             element={<ProtectedRouteElement
-            element={Movies} 
-            cinemaCheckbox = {cinemaCheckbox}
-            onCheckboxClick = {handleCheckboxClick}
-            signOut = {signOut}
-            loggedIn={loggedIn}
-          />} />
+            element={Movies}
+            loggedIn={loggedIn}/>} />
           <Route path="/saved-movies" 
-          element={<ProtectedRouteElement
-          element={SavedMovies} 
-          cinemaCheckbox = {cinemaCheckbox}
-          onCheckboxClick = {handleCheckboxClick}
-          signOut = {signOut}
-          loggedIn={loggedIn}
-          />}  />
+            element={<ProtectedRouteElement
+              element={SavedMovies}
+              loggedIn={loggedIn} 
+            />} />
           <Route path="/profile"
-          element={<ProtectedRouteElement
-          element={Profile} 
-          user={userData} 
-          signOut = {signOut}
-          loggedIn={loggedIn}/>} />
+            element={<ProtectedRouteElement
+              element={Profile}
+              user={userData}
+              loggedIn={loggedIn}
+              signOut={signOut}
+            />} />
           <Route path="/404" element= {<NotFound />} />
-          <Route path="/" element={loggedIn ? <Navigate to="/404" replace /> : <Navigate to="/sign-in" replace />} />
+          <Route path="/" element={loggedIn ? <Navigate to="/movies" replace /> : <Navigate to="/sign-in" replace />} />
         </Routes>
         <InfoTooltip isOpen={isInfoTooltipOpen} onClose={closeAllPopups} status={status}/>
       </div>
