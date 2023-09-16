@@ -3,7 +3,6 @@ import { getMovies } from '../../utils/MoviesApi';
 
 const SearchForm = ({setLoading, page, handleResult }) => {
     const formData = JSON.parse(localStorage.getItem('formValue'));
-    console.log(formData);
     const startFormValue = ((page ==='movies')&&(formData !== null))
                             ? formData
                             : { keyword: '', shortFilms: false };
@@ -12,7 +11,6 @@ const SearchForm = ({setLoading, page, handleResult }) => {
     const [formValue, setFormValue] = useState(startFormValue);
     const [list, setList] = useState((page ==='movies') ? JSON.parse(localStorage.getItem('searchResults')) : JSON.parse(localStorage.getItem('savedMovies')));
 
-    console.log(list);
     useEffect(() => {
         setFormValue({
             keyword: formValue.keyword,

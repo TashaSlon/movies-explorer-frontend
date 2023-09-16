@@ -8,8 +8,6 @@ import Preloader from '../Preloader/Preloader';
 const Movies = (props) => {
     const [searchResults, setSearchResults] = useState(JSON.parse(localStorage.getItem('searchResults')));
     const [loading, setLoading] = useState(false);
-    console.log(JSON.parse(localStorage.getItem('searchResults')));
-    console.log(searchResults);
 
     function handleResult(results) {
        

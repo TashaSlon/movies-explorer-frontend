@@ -71,7 +71,7 @@
 .auth__label {
   display: block;
 
-  padding-top: 20px;
+  padding-top: 10px;
 
   color: #8B8B8B;
   font-size: 10px;
@@ -91,6 +91,10 @@
   background-color: #2F2F2F;
   font-size: 13px;
   color: #fff;
+}
+
+.auth__input:invalid {
+  color: #EE3465;
 }
 
 .auth__button-container {
@@ -134,10 +138,25 @@
   border: none;
 }
 
+.auth__btn-disabled {
+  opacity: 0.8;
+}
+
 .auth__link {
   padding-left: 7px;
 
   color: #4285F4;
+}
+
+.auth__error {
+  display: block;
+
+  height: 26px;
+
+  padding-top: 10px;
+
+  color: #EE3465;
+  font-size: 10px;
 }
 
 .link {
