@@ -97,6 +97,10 @@
   color: #EE3465;
 }
 
+.auth__input-invalid {
+  color: #EE3465;
+}
+
 .auth__button-container {
   max-width: 396px;
 

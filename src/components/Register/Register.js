@@ -1,5 +1,6 @@
 import React, {useState,  useCallback} from 'react';
 import {Link} from 'react-router-dom';
+import isEmail from 'validator/lib/isEmail';
 import Logo from '../Logo/Logo';
 
 const Register = (props) => {
@@ -9,11 +10,13 @@ const Register = (props) => {
         password: ''
     });
 
-    const [isValid, setIsValid] = React.useState(false);
+    const [isValid, setIsValid] = useState(false);
 
     const handleChange = (e) => {
-        const {name, value, validationMessage} = e.target;
-        const errorPlace = e.target.nextSibling;
+        const field = e.target;
+        const {name, value, validationMessage} = field;
+        const errorPlace = field.nextSibling;
+        let status = true;
         
         errorPlace.textContent = validationMessage;
 
@@ -21,8 +24,20 @@ const Register = (props) => {
             ...formValue,
             [name]: value
             });
-
-        setIsValid(e.target.checkValidity());
+        
+        if (field.type === 'email') {
+            status = isEmail(value);
+            if (!status) {
+                errorPlace.textContent = "Похоже email указан неверно";
+                field.classList.add('auth__input-invalid');
+            } else {
+                field.classList.remove('auth__input-invalid');
+            };
+        } else {
+            status = field.checkValidity();
+        }
+            
+        setIsValid(status);
     }
 
     const resetForm = useCallback(
