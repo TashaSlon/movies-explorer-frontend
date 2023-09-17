@@ -90,6 +90,7 @@ function App() {
     register(name, email, password)
     .then((res) => {
         handleInfoTooltipClick(res);
+        setUserData(email);
         setLoggedIn(true);
         navigate('/movies', {replace: true});
     })
@@ -120,7 +121,7 @@ function App() {
       <div className="page">
         <Routes>
           <Route path="/" 
-           element={<Main/>}
+           element={<Main loggedIn={loggedIn}/>}
           />
           <Route path="/sign-up" element={
             <div className="registerContainer">
