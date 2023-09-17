@@ -1,6 +1,5 @@
 .movies-card {
-    position: relative;
-    
+    position: relative;  
 }
 
 .movies-card__image {
@@ -87,25 +86,11 @@
 }
 
 .movies-card__save {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    height: 100%;
-    width: 100%;
-  
-    background-color: transparent;
-    color: transparent;
-  
-    border: none;
-}
-  
-.movies-card__save:hover {
+    display: none;
     position: absolute;
     top: 14px;
     left: 218px;
     
-  
     height: 21px;
     width: 72px;
   
@@ -122,8 +107,14 @@
 }
 
 .movies-card__link {
+    z-index: 1;
+
     color: #fff;
     text-decoration: none;
+}
+  
+.movies-card__link:hover ~ .movies-card__save{
+    display: block;
 }
 
 @media screen and (min-width: 768px) {
