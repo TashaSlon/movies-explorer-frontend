@@ -20,18 +20,14 @@ const SearchForm = ({setLoading, page, handleResult }) => {
 
     useEffect(() => {
         const results = filterData(list, formValue.keyword, formValue.shortFilms);
-        console.log(results);
         handleResult(results);
     }, [formValue.shortFilms]);
 
     useEffect(() => {
         const error = document.querySelector('.search__error');
-        console.log(formValue);
-        console.log(list);
         const { keyword, shortFilms } = formValue;
 
         const results = filterData(list, keyword, shortFilms);
-        console.log(results);
 
         handleResult(results);
 

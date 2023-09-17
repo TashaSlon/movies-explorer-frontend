@@ -1,7 +1,7 @@
-import React, {useState,  useCallback} from 'react';
+import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import isEmail from 'validator/lib/isEmail';
 import Logo from '../Logo/Logo';
+import { handleChange } from '../../utils/validation';
 
 const Register = (props) => {
     const [formValue, setFormValue] = useState({
@@ -9,52 +9,19 @@ const Register = (props) => {
         email: '',
         password: ''
     });
-
     const [isValid, setIsValid] = useState(false);
 
-    const handleChange = (e) => {
+    const handleValid = (e) => {
         const field = e.target;
-        const {name, value, validationMessage} = field;
         const errorPlace = field.nextSibling;
-        let status = true;
-        
-        errorPlace.textContent = validationMessage;
-
-        setFormValue({
-            ...formValue,
-            [name]: value
-            });
-        
-        if (field.type === 'email') {
-            status = isEmail(value);
-            if (!status) {
-                errorPlace.textContent = "Похоже email указан неверно";
-                field.classList.add('auth__input-invalid');
-            } else {
-                field.classList.remove('auth__input-invalid');
-            };
-        } else {
-            status = field.checkValidity();
-        }
-            
-        setIsValid(status);
+        errorPlace.textContent = handleChange(field, setFormValue, setIsValid, formValue);
     }
-
-    const resetForm = useCallback(
-        (newValues = {}, newErrors = {}, newIsValid = false) => {
-            setFormValue(newValues);
-            setIsValid(newIsValid);
-        },
-        [setFormValue, setIsValid]
-      );
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const { name, password, email } = formValue;
             props.onRegister(name, password, email);
-        
-        resetForm();
     }
 
     return (
@@ -67,17 +34,17 @@ const Register = (props) => {
                     <div className="auth__inputs">
                         <label className="auth__label" htmlFor="name">
                             Имя
-                            <input className="auth__input" id="name" name="name" type="text" value={formValue.name} onChange={handleChange} placeholder='Имя' required minLength="2" maxLength="30"/>
+                            <input className="auth__input" id="name" name="name" type="text" value={formValue.name} onChange={handleValid} placeholder='Имя' required minLength="2" maxLength="30"/>
                             <span className="auth__error"></span>
                         </label>
                         <label className="auth__label" htmlFor="email">
                             E-mail
-                            <input className="auth__input" id="email" name="email" type="email" value={formValue.email} onChange={handleChange} placeholder='E-mail' required />
+                            <input className="auth__input" id="email" name="email" type="email" value={formValue.email} onChange={handleValid} placeholder='E-mail' required />
                             <span className="auth__error"></span>
                         </label>
                         <label className="auth__label" htmlFor="password">
                             Пароль
-                            <input className="auth__input" id="password" name="password" type="password" value={formValue.password} onChange={handleChange} placeholder='Пароль' required minLength="6" />
+                            <input className="auth__input" id="password" name="password" type="password" value={formValue.password} onChange={handleValid} placeholder='Пароль' required minLength="6" />
                             <span className="auth__error"></span>
                         </label>
                     </div>

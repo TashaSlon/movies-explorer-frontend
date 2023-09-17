@@ -3,7 +3,6 @@ import Cross from '../../images/Cross.svg';
 import { Link } from 'react-router-dom';
 
 const Header = (props) => {
-    console.log(props.loggedIn);
     function openSidebar() {
         const sidebar = document.querySelector('.header__sidebar');
         sidebar.classList.add('header__sidebar_active');

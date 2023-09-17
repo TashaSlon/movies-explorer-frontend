@@ -100,6 +100,10 @@ function App() {
     });
   }
 
+  function handleProfile(name, email) {
+    setUserData(name, email);
+  }
+
   function signOut(){
     logout()
     .then((res) => {
@@ -146,6 +150,7 @@ function App() {
               user={userData}
               loggedIn={loggedIn}
               signOut={signOut}
+              handleProfile={handleProfile}
             />} />
           <Route path="/404" element= {<NotFound />} />
           <Route path="/" element={loggedIn ? <Navigate to="/movies" replace /> : <Navigate to="/sign-in" replace />} />

@@ -32,6 +32,7 @@
 .profile__field {
     display: flex;
     justify-content: space-between;
+align-items: center;
 
     padding: 16px 0;
 
@@ -65,6 +66,18 @@
     color: #fff;
     text-align: right;
     background-color: transparent;
+    border: none;
+}
+
+.profile__input:invalid {
+    color: #EE3465;
+}
+
+.profile__input:focus {
+    border: none;
+}
+
+.profile__input:active {
     border: none;
 }
 
