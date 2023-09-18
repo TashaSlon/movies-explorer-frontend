@@ -56,8 +56,6 @@ const MoviesCard = (props) => {
         .then((movie) => {
             const result = savedMovies.filter((item) => item._id !== movie._id);
             localStorage.setItem('savedMovies', JSON.stringify(result));
-            console.log(savedMovies);
-            console.log(JSON.parse(localStorage.getItem('savedMovies')));
             props.handleResult(result);
         })
         .catch(err => console.log(`Ошибка.....: ${err}`))

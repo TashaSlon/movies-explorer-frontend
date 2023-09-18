@@ -78,6 +78,8 @@ padding: 5px 12px;
   font-size: 10px;
   line-height: 160%;
   border: none;
+
+  cursor: pointer;
 }
 
 .header__account {
@@ -110,6 +112,8 @@ padding: 5px 12px;
     background-color: transparent;
     background-position: 0 -2px;
     border: none;
+
+    cursor: pointer;
 }
 
 .header__sidebar-link {

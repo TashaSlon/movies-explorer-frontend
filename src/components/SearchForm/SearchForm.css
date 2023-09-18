@@ -47,6 +47,8 @@
     background-image: url('../../images/search.svg');
     background-repeat: no-repeat;
     background-size: 44px 44px;
+
+    cursor: pointer;
 }
 
 .search__short-films {

@@ -21,6 +21,7 @@ function App() {
     email: 'exampl@exampl.com'
   });
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
+  const [popupPage, setPopupPage] = useState('');
   const [status, setStatus] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
 
@@ -51,7 +52,6 @@ function App() {
       if (loggedIn){
           api.getMovies()
             .then(movies => {
-                console.log(movies);
                 let savedMovies = [];
                 movies.forEach(movie => savedMovies.push(movie));
                 localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
@@ -62,7 +62,8 @@ function App() {
             });
       }},[loggedIn]);
 
-  function handleInfoTooltipClick(res) {
+  function handleInfoTooltipClick(res, page) {
+    setPopupPage(page);
     if(res.name) {
       setStatus(true);
     }
@@ -82,21 +83,21 @@ function App() {
       })
       .catch(err => {
         setStatus(false);
-        handleInfoTooltipClick(err);
+        handleInfoTooltipClick(err, 'login');
       });
   }
 
   function handleRegister(name, password, email) {
     register(name, email, password)
     .then((res) => {
-        handleInfoTooltipClick(res);
+        handleInfoTooltipClick(res, 'register');
         setUserData(email);
         setLoggedIn(true);
         navigate('/movies', {replace: true});
     })
     .catch(err => {
       setStatus(false);
-      handleInfoTooltipClick(err);
+      handleInfoTooltipClick(err, 'register');
     });
   }
 
@@ -151,11 +152,12 @@ function App() {
               loggedIn={loggedIn}
               signOut={signOut}
               handleProfile={handleProfile}
+              handleInfoTooltipClick={handleInfoTooltipClick}
             />} />
           <Route path="/404" element= {<NotFound />} />
           <Route path="/" element={loggedIn ? <Navigate to="/movies" replace /> : <Navigate to="/sign-in" replace />} />
         </Routes>
-        <InfoTooltip isOpen={isInfoTooltipOpen} onClose={closeAllPopups} status={status}/>
+        <InfoTooltip isOpen={isInfoTooltipOpen} onClose={closeAllPopups} status={status} page={popupPage}/>
       </div>
     </CurrentUserContext.Provider>
   );

@@ -1,7 +1,7 @@
 import fail from '../../images/Cross.png';
 import success from '../../images/Union.png';
 
-export default function InfoTooltip({isOpen, onClose, status}) {
+export default function InfoTooltip({isOpen, onClose, status, page}) {
     const popupClass = isOpen ? ('popup popup_overlay popup_opened'): 'popup popup_overlay';
     let name = 'fail';
     let link = fail;
@@ -10,7 +10,7 @@ export default function InfoTooltip({isOpen, onClose, status}) {
     if(status) {
         name = 'success';
         link = success;
-        title ='Вы успешно зарегистрировались!';
+        title = (page=== 'profile') ? 'Профиль успешно изменен': 'Вы успешно зарегистрировались!';
     }
   
     return (

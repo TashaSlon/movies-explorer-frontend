@@ -1,15 +1,21 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from '../Header/Header';
 import { api } from '../../utils/MainApi';
 import { handleChange } from '../../utils/validation';
 
 const Profile = (props) => {
-    let { name, email } = props.user;
+    const { name, email } = props.user;
     const [formValue, setFormValue] = useState({
         name: name,
         email: email
     });
     const [isValid, setIsValid] = useState(false);
+    
+    useEffect(() => {
+        if ((formValue.name === name)&&(formValue.email === email)) {
+            setIsValid(false);
+        }
+    }, [formValue]);
 
     const handleValid = (e) => {
         const field = e.target;
@@ -41,13 +47,12 @@ const Profile = (props) => {
         
 
         api.setUserInfo(formValue.name, formValue.email)
-            .then(() => {
+            .then((res) => {
                 fieldsets.forEach((fieldset) => {
                     fieldset.classList.toggle('profile__fieldset_disabled');
                 });
-                console.log(formValue);
                 props.handleProfile(formValue.name, formValue.email);
-                
+                props.handleInfoTooltipClick(res, 'profile');
             })
             .catch(err => {
                 error.textContent = err;

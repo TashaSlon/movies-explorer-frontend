@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
 const MoviesCardList = (props) => {
@@ -6,21 +6,35 @@ const MoviesCardList = (props) => {
 
     const getParams = () => {
         const width = document.documentElement.clientWidth;
-        const startParams = (width <= 767) 
+        const startParams = (width <= 649) 
                         ? {maxCards: 5, addCards: 2}
-                        : (width <= 1279) 
+                        : (width <= 1137) 
                             ? {maxCards: 8, addCards: 2}
-                            : {maxCards: 12, addCards: 3};
+                            : (width > 1137) 
+                                ? {maxCards: 12, addCards: 3}
+                                : {maxCards: 12, addCards: 3};
 
         return startParams;
     }
-    
-    window.addEventListener('resize', function(event) {
-        setParams(getParams());
-    }, true);
 
     const [params, setParams] = useState(getParams());
-    let cards = list.length < params.maxCards ? list.length : params.maxCards;
+
+    let timeout;
+
+    window.addEventListener('resize', () => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            setParams(getParams());
+            
+        }, 500);
+    });
+
+    useEffect(() => {
+        props.handleResult(list);
+    }, [params]);
+    
+
+    let cards = (list.length < params.maxCards)||(props.page === 'saved-movies') ? list.length : params.maxCards;
 
     const getFilmList = films => {
         let content = [];
@@ -41,7 +55,7 @@ const MoviesCardList = (props) => {
             <ul className={(props.page === 'movies') ? "movies-list" : "movies-list saved-movies__list"}>
                 { getFilmList(list) }
             </ul>
-            { list.length > params.maxCards ? <button className='movies__btn btn' onClick={getAdditionalCards}>Ещё</button> : ''}
+            { (list.length > params.maxCards) && (props.page === 'movies') ? <button className='movies__btn btn' onClick={getAdditionalCards}>Ещё</button> : ''}
         </>
     );
 };

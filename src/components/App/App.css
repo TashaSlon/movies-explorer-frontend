@@ -140,10 +140,16 @@
   font-size: 12px;
   color: #fff;
   border: none;
+
+  cursor: pointer;
 }
 
 .auth__btn-disabled {
   opacity: 0.8;
+}
+
+.auth__btn-disabled:hover {
+  cursor: default;
 }
 
 .auth__link {
@@ -182,7 +188,6 @@
 
 .btn:hover {
   opacity: 0.8;
-  cursor: pointer;
 }
 
 .error {
