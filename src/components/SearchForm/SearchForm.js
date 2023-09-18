@@ -83,12 +83,12 @@ const SearchForm = ({setLoading, page, handleResult }) => {
         });
         
         const results = shortFilms ? resultsFilter.filter((item) => item.duration <= 40) : resultsFilter;
-        (page ==='movies') ? localStorage.setItem('searchResults', JSON.stringify(results)) : console.log('');
+        if (page ==='movies') { localStorage.setItem('searchResults', JSON.stringify(results)) };
         return results;
     }
 
     const handleSubmit = () => {
-        (page ==='movies') ? localStorage.setItem('formValue', JSON.stringify(formValue)) : console.log('');
+        if (page ==='movies') {localStorage.setItem('formValue', JSON.stringify(formValue)) };
         const fullList = JSON.parse(localStorage.getItem('fullList'));
         const error = document.querySelector('.search__error');
         const { keyword } = formValue;
