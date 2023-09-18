@@ -10,7 +10,6 @@ const Movies = (props) => {
     const [loading, setLoading] = useState(false);
 
     function handleResult(results) {
-       
         const content = JSON.parse(localStorage.getItem('searchResults')); 
         setSearchResults(content);
     }
