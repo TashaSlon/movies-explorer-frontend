@@ -7,7 +7,6 @@ import { useState } from 'react';
 const SavedMovies = (props) => {
     const savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
     const [searchResults, setSearchResults] = useState(savedMovies);
-    console.log(searchResults);
 
     function handleResult(result) {
         setSearchResults(result);
@@ -18,7 +17,6 @@ const SavedMovies = (props) => {
         const resultSave = savedMovies.filter((item) => item._id !== id);
         localStorage.setItem('savedMovies', JSON.stringify(resultSave));
         const result = searchResults.filter((item) => item._id !== id);
-        console.log(result);
         setSearchResults(result);
     }
 

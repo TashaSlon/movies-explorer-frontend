@@ -20,7 +20,6 @@ const SearchForm = ({setLoading, page, handleResult }) => {
 
     useEffect(() => {
         const results = filterData(list, formValue.keyword, formValue.shortFilms);
-        console.log(results);
         if (page ==='movies') {localStorage.setItem('formValue', JSON.stringify(formValue)) };
         handleResult(results);
     }, [formValue.shortFilms]);
@@ -30,7 +29,6 @@ const SearchForm = ({setLoading, page, handleResult }) => {
         const { keyword, shortFilms } = formValue;
 
         const results = filterData(list, keyword, shortFilms);
-        console.log(results);
         handleResult(results);
 
         error.textContent = "";
@@ -89,7 +87,6 @@ const SearchForm = ({setLoading, page, handleResult }) => {
         const results = shortFilms ? resultsFilter.filter((item) => item.duration <= 40) : resultsFilter;
         if (page ==='movies') { localStorage.setItem('searchResults', JSON.stringify(results)) };
         
-        console.log(results);
         return results;
     }
 

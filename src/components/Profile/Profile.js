@@ -10,7 +10,7 @@ const Profile = (props) => {
         email: email
     });
     const [isValid, setIsValid] = useState(false);
-    
+
     useEffect(() => {
         if ((formValue.name === name)&&(formValue.email === email)) {
             setIsValid(false);
@@ -28,7 +28,6 @@ const Profile = (props) => {
         fieldsets.forEach((fieldset) => {
             fieldset.classList.toggle('profile__fieldset_disabled');
         });
-        setFormValue({name, email});
     }
 
     function handleLogout() {

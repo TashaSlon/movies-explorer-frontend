@@ -4,7 +4,6 @@ const MoviesCardList = ({ list, page, handleResult, params, getAdditionalCards, 
     const getFilmList = films => {
         let content = [];
 
-        console.log(cards);
         for (let i = 0; i < cards; i++) {
           content.push(<MoviesCard movie={films[i]} page={page} handleResult={handleResult} handleResultForLike={handleResultForLike}/>);
         }
