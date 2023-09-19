@@ -44,7 +44,7 @@ const MoviesCard = (props) => {
         .then((newCard) => {
             savedMovies.push(newCard);
             localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
-            props.handleResult();
+            props.handleResultForLike();
 
         })
         .catch(err => console.log(`Ошибка.....: ${err}`))
@@ -54,9 +54,8 @@ const MoviesCard = (props) => {
         const film = savedMovies.find((item) => item.movieId === String(id));
         api.dislikeMovie(film._id)
         .then((movie) => {
-            const result = savedMovies.filter((item) => item._id !== movie._id);
-            localStorage.setItem('savedMovies', JSON.stringify(result));
-            props.handleResult(result);
+            
+            props.handleResultForLike(film._id);
         })
         .catch(err => console.log(`Ошибка.....: ${err}`))
     };

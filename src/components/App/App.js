@@ -109,7 +109,7 @@ function App() {
     logout()
     .then((res) => {
       setLoggedIn(false);
-      navigate('/sign-in', {replace: true});
+      navigate('/', {replace: true});
       localStorage.removeItem('searchResults');
       localStorage.removeItem('savedMovies');
       localStorage.removeItem('formValue');
@@ -155,7 +155,7 @@ function App() {
               handleInfoTooltipClick={handleInfoTooltipClick}
             />} />
           <Route path="/404" element= {<NotFound />} />
-          <Route path="/" element={loggedIn ? <Navigate to="/" replace /> : <Navigate to="/sign-in" replace />} />
+          <Route path="/" element={loggedIn ? <Navigate to="/" replace /> : <Navigate to="/" replace />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <InfoTooltip isOpen={isInfoTooltipOpen} onClose={closeAllPopups} status={status} page={popupPage}/>

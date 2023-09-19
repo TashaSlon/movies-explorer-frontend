@@ -10,8 +10,7 @@ const SearchForm = ({setLoading, page, handleResult }) => {
     const [isChecked, setIsChecked] = useState(startFormValue.shortFilms);
     const [formValue, setFormValue] = useState(startFormValue);
     const [list, setList] = useState((page ==='movies') ? JSON.parse(localStorage.getItem('searchResults')) : JSON.parse(localStorage.getItem('savedMovies')));
-    console.log(isChecked);
-    console.log(formValue);
+
     useEffect(() => {
         setFormValue({
             keyword: formValue.keyword,
