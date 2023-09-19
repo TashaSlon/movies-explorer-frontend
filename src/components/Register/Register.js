@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import { handleChange } from '../../utils/validation';
@@ -10,6 +10,12 @@ const Register = (props) => {
         password: ''
     });
     const [isValid, setIsValid] = useState(false);
+
+    useEffect(() => {
+        if ((formValue.name === '')||(formValue.email === '')||(formValue.password === '')) {
+            setIsValid(false);
+        }
+    }, [formValue, isValid]);
 
     const handleValid = (e) => {
         const field = e.target;
@@ -34,11 +40,11 @@ const Register = (props) => {
                     <div className="auth__inputs">
                         <label className="auth__label" htmlFor="name">
                             Имя
-                            <input className="auth__input" id="name" name="name" type="text" value={formValue.name} onChange={handleValid} placeholder='Имя' required minLength="2" maxLength="30"/>
+                            <input className="auth__input" id="name" name="name" type="text" value={formValue.name} onChange={handleValid} placeholder='Имя' minLength="2" maxLength="30" required />
                             <span className="auth__error"></span>
                         </label>
                         <label className="auth__label" htmlFor="email">
-                            E-mail
+                            E-mail 
                             <input className="auth__input" id="email" name="email" type="email" value={formValue.email} onChange={handleValid} placeholder='E-mail' required />
                             <span className="auth__error"></span>
                         </label>

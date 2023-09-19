@@ -155,7 +155,8 @@ function App() {
               handleInfoTooltipClick={handleInfoTooltipClick}
             />} />
           <Route path="/404" element= {<NotFound />} />
-          <Route path="/" element={loggedIn ? <Navigate to="/movies" replace /> : <Navigate to="/sign-in" replace />} />
+          <Route path="/" element={loggedIn ? <Navigate to="/" replace /> : <Navigate to="/sign-in" replace />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <InfoTooltip isOpen={isInfoTooltipOpen} onClose={closeAllPopups} status={status} page={popupPage}/>
       </div>

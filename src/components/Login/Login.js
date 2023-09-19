@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import { handleChange } from '../../utils/validation';
@@ -9,6 +9,12 @@ const Login = (props) => {
         password: ''
     });
     const [isValid, setIsValid] = useState(false);
+
+    useEffect(() => {
+        if ((formValue.email === '')||(formValue.password === '')) {
+            setIsValid(false);
+        }
+    }, [formValue, isValid]);
 
     const handleValid = (e) => {
         const field = e.target;
