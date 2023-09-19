@@ -31,7 +31,7 @@ const SearchForm = ({setLoading, page, handleResult }) => {
         const { keyword, shortFilms } = formValue;
 
         const results = filterData(list, keyword, shortFilms);
-
+        console.log(results);
         handleResult(results);
 
         error.textContent = "";
@@ -73,11 +73,13 @@ const SearchForm = ({setLoading, page, handleResult }) => {
         if (list === null) {
             return null;
         }
+
+        const lowKeyword = keyword.toLowerCase();
         const resultsRU = list.filter(item =>
-            item.nameRU.toLowerCase().includes(keyword)
+            item.nameRU.toLowerCase().includes(lowKeyword)
           );
         const resultsEN = list.filter(item =>
-            item.nameEN.toLowerCase().includes(keyword)
+            item.nameEN.toLowerCase().includes(lowKeyword)
         );
         const resultsAll = resultsRU.concat(resultsEN);
     
@@ -87,6 +89,8 @@ const SearchForm = ({setLoading, page, handleResult }) => {
         
         const results = shortFilms ? resultsFilter.filter((item) => item.duration <= 40) : resultsFilter;
         if (page ==='movies') { localStorage.setItem('searchResults', JSON.stringify(results)) };
+        
+        console.log(results);
         return results;
     }
 
