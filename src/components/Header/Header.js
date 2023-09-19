@@ -21,8 +21,8 @@ const Header = (props) => {
                         if (props.loggedIn) {
                             return (<>
                                         <nav className="header__nav">
-                                            <Link to="/movies" className="link">Фильмы</Link>
-                                            <Link to="/saved-movies" className="link">Сохраненные фильмы</Link>
+                                            <Link to="/movies" className="link header__nav-link">Фильмы</Link>
+                                            <Link to="/saved-movies" className="link header__nav-link">Сохраненные фильмы</Link>
                                         </nav>
                                         <Link to="/profile" className="header__account">Аккаунт</Link>
                                         <button className="btn header__btn-menu" onClick={openSidebar}></button>

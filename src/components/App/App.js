@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 import './App.css';
 import Main from '../Main/Main';
 import Register from '../Register/Register';
@@ -8,9 +9,10 @@ import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import NotFound from '../NotFound/NotFound';
-import { getEmail, authorize, register,logout } from '../../utils/auth';
-import { api } from '../../utils/api.js';
-
+import InfoTooltip from '../InfoTooltip/InfoTooltip';
+import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute';
+import { authorize, register, logout } from '../../utils/auth.js';
+import { api } from '../../utils/MainApi';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -19,17 +21,18 @@ function App() {
     email: 'exampl@exampl.com'
   });
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
+  const [popupPage, setPopupPage] = useState('');
   const [status, setStatus] = useState(false);
-  const [cinemaCheckbox, setCinemaCheckbox] = useState(true);
+  const [currentUser, setCurrentUser] = useState({});
 
   const navigate = useNavigate();
 
-  /*function tokenCheck() {
+  function tokenCheck() {
     api.getUserInfo()
     .then((res) => {
       if (res){
         setLoggedIn(true);
-        navigate("/", {replace: true});
+        navigate("/movies", {replace: true});
       }
     })
     .catch(err => console.log(`Ошибка.....: ${err}`))
@@ -43,13 +46,32 @@ function App() {
           setUserData(userData);
         })
         .catch(err => console.log(`Ошибка.....: ${err}`))
-    }},[loggedIn]); */
+    }},[loggedIn]);
 
-  function handleInfoTooltipClick(res) {
-    if(res.data) {
+    useEffect(() => {
+      if (loggedIn){
+          api.getMovies()
+            .then(movies => {
+                let savedMovies = [];
+                movies.forEach(movie => savedMovies.push(movie));
+                localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
+            })
+            .catch(err => {
+              localStorage.setItem('savedMovies', JSON.stringify([]));
+              console.log(`Ошибка.....: ${err}`)
+            });
+      }},[loggedIn]);
+
+  function handleInfoTooltipClick(res, page) {
+    setPopupPage(page);
+    if(res.name) {
       setStatus(true);
     }
     setIsInfoTooltipOpen(true);
+  };
+
+  function closeAllPopups() {
+    setIsInfoTooltipOpen(false);
   };
 
   function handleLogin(password, email) {
@@ -61,27 +83,37 @@ function App() {
       })
       .catch(err => {
         setStatus(false);
-        handleInfoTooltipClick(err);
+        handleInfoTooltipClick(err, 'login');
       });
   }
 
-  function handleRegister(password, email) {
-    register(password, email)
+  function handleRegister(name, password, email) {
+    register(name, email, password)
     .then((res) => {
-        handleInfoTooltipClick(res);
-        navigate('/sign-in', {replace: true});
+        handleInfoTooltipClick(res, 'register');
+        setUserData(email);
+        setLoggedIn(true);
+        navigate('/movies', {replace: true});
     })
     .catch(err => {
       setStatus(false);
-      handleInfoTooltipClick(err);
+      handleInfoTooltipClick(err, 'register');
     });
+  }
+
+  function handleProfile(name, email) {
+    setUserData(name, email);
   }
 
   function signOut(){
     logout()
     .then((res) => {
       setLoggedIn(false);
-      navigate('/sign-in', {replace: true});
+      navigate('/', {replace: true});
+      localStorage.removeItem('searchResults');
+      localStorage.removeItem('savedMovies');
+      localStorage.removeItem('formValue');
+      localStorage.removeItem('fullList');
     })
     .catch(err => {
       setStatus(false);
@@ -89,50 +121,46 @@ function App() {
     });
   }
 
-  function handleCheckboxClick() {
-    if (cinemaCheckbox) {
-      setCinemaCheckbox(false);
-    } else {
-      setCinemaCheckbox(true);
-    }
-  }
-
   return (
-    <div className="page">
-      <Routes>
-        <Route path="/" 
-        element= {<Main signOut = {signOut}
-        loggedIn={loggedIn}/>} 
-        />
-        <Route path="/sign-up" element={
-          <div className="registerContainer">
-            <Register onRegister={handleRegister} />
-          </div>} />
-        <Route path="/sign-in" element={
-          <div className="loginContainer">
-            <Login handleLogin={handleLogin} />
-          </div>} />
-        <Route path="/movies" 
-          element= {<Movies 
-          cinemaCheckbox = {cinemaCheckbox}
-          onCheckboxClick = {handleCheckboxClick}
-          signOut = {signOut}
-          loggedIn={loggedIn}
-        />} />
-        <Route path="/saved-movies" 
-        element= {<SavedMovies 
-        cinemaCheckbox = {cinemaCheckbox}
-        onCheckboxClick = {handleCheckboxClick}
-        signOut = {signOut}
-        loggedIn={loggedIn}/>}  />
-        <Route path="/profile" element= {<Profile 
-        user={userData} 
-        signOut = {signOut}
-        loggedIn={loggedIn}/>} />
-        <Route path="/404" element= {<NotFound />} />
-        {/*<Route path="/" element={loggedIn ? <Navigate to="/" replace /> : <Navigate to="/sign-in" replace />} /> */}
-      </Routes>
-    </div>
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className="page">
+        <Routes>
+          <Route path="/" 
+           element={<Main loggedIn={loggedIn}/>}
+          />
+          <Route path="/sign-up" element={
+            <div className="registerContainer">
+              <Register onRegister={handleRegister} />
+            </div>} />
+          <Route path="/sign-in" element={
+            <div className="loginContainer">
+              <Login handleLogin={handleLogin} />
+            </div>} />
+          <Route path="/movies" 
+            element={<ProtectedRouteElement
+            element={Movies}
+            loggedIn={loggedIn}/>} />
+          <Route path="/saved-movies" 
+            element={<ProtectedRouteElement
+              element={SavedMovies}
+              loggedIn={loggedIn} 
+            />} />
+          <Route path="/profile"
+            element={<ProtectedRouteElement
+              element={Profile}
+              user={userData}
+              loggedIn={loggedIn}
+              signOut={signOut}
+              handleProfile={handleProfile}
+              handleInfoTooltipClick={handleInfoTooltipClick}
+            />} />
+          <Route path="/404" element= {<NotFound />} />
+          <Route path="/" element={loggedIn ? <Navigate to="/" replace /> : <Navigate to="/" replace />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <InfoTooltip isOpen={isInfoTooltipOpen} onClose={closeAllPopups} status={status} page={popupPage}/>
+      </div>
+    </CurrentUserContext.Provider>
   );
 }
 

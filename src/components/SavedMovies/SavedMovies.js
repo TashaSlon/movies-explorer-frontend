@@ -2,37 +2,37 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import { useState } from 'react';
 
 const SavedMovies = (props) => {
+    const savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
+    const [searchResults, setSearchResults] = useState(savedMovies);
 
-    const list = [
-        {
-            id: 1,
-            image: 'https://api.nomoreparties.co/uploads/thumbnail_552242179_1280x720_66bc43b289.jpeg',
-            name: 'Pulp: фильм о жизни, смерти и супермаркетах',
-            time: '1ч 30м',
-        },
-        {
-            id: 2,
-            image: 'https://api.nomoreparties.co/uploads/thumbnail_orig_bc3e53efa8.jpeg',
-            name: 'Еще',
-            time: '1ч 36м',
-        },
-        {
-            id: 3,
-            image: 'https://api.nomoreparties.co/uploads/thumbnail_zagruzhennoe_2_c709860078.jpeg',
-            name: 'Панк-певица',
-            time: '1ч 21м',
-        }
-    ];
+    function handleResult(result) {
+        setSearchResults(result);
+    }
+
+    function handleResultForLike(id) { 
+        const savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
+        const resultSave = savedMovies.filter((item) => item._id !== id);
+        localStorage.setItem('savedMovies', JSON.stringify(resultSave));
+        const result = searchResults.filter((item) => item._id !== id);
+        setSearchResults(result);
+    }
 
     return (
         <>
             <Header loggedIn={props.loggedIn} signOut={props.signOut}/>
             <main className="saved-movies">
-                <SearchForm cinemaCheckbox = {props.cinemaCheckbox}
-                onCheckboxClick={props.onCheckboxClick}/>
-                <MoviesCardList list={list} page='saved-movies'/>
+                <SearchForm
+                    page='saved-movies'
+                    handleResult={handleResult}/>
+                {searchResults === null 
+                    ? <div></div>
+                    : searchResults.length === 0 ? 
+                        <div className="movies__zero">Ничего не найдено</div>
+                        : <MoviesCardList list={searchResults} page='saved-movies' handleResult={handleResult} params='' cards={searchResults.length} handleResultForLike={handleResultForLike}/>
+                }
             </main>
             <Footer />
         </>

@@ -32,6 +32,7 @@
 .profile__field {
     display: flex;
     justify-content: space-between;
+align-items: center;
 
     padding: 16px 0;
 
@@ -68,6 +69,18 @@
     border: none;
 }
 
+.profile__input:invalid {
+    color: #EE3465;
+}
+
+.profile__input:focus {
+    border: none;
+}
+
+.profile__input:active {
+    border: none;
+}
+
 .profile__input::placeholder {
     color: #fff;
 }
@@ -80,6 +93,8 @@
     color: #fff;
     font-size: 12px;
     font-weight: 500;
+
+    cursor: pointer;
 }
 
 .profile__button-accent {
@@ -113,6 +128,8 @@
     font-size: 12px;
     color: #fff;
     border: none;
+
+    cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {

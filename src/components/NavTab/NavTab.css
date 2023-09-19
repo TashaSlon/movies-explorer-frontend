@@ -9,6 +9,7 @@
 }
 
 .menu__btn {
+    display: block;
     padding: 5px 0;
     
     width: 82px;
@@ -20,6 +21,8 @@
     font-size: 10px;
     line-height: 16px;
     border: none;
+
+    cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {

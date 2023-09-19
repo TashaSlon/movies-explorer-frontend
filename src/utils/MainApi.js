@@ -7,6 +7,7 @@ class Api {
   
     _getHeaders() {
       return {
+        "Accept": "application/json",
         "Content-Type": "application/json",
       };
     }
@@ -40,67 +41,56 @@ class Api {
       })
       .then(this._getJson);
     }
+
+    logout() {
+      return fetch(`${this._baseUrl}/signout`, {
+        headers: this._getHeaders(),
+        credentials: 'include',
+        method: 'GET'
+      })
+      .then(this._getJson);
+    };
   
-    getCards() {
-      return fetch(`${this._baseUrl}/cards`, {
+    getMovies() {
+      return fetch(`${this._baseUrl}/movies`, {
         method: 'GET',
         headers: this._getHeaders(),
         credentials: 'include' })
       .then(this._getJson);
     }
-  
-    addNewCard(cardData) {
-      return fetch(`${this._baseUrl}/cards`, {
+
+    likeMovie(props) {
+      const bodyReq = {
+        country: props.country,
+        director: props.director,
+        duration: props.duration,
+        year: props.year,
+        description: props.description,
+        image: props.image,
+        trailerLink: props.trailerLink,
+        nameRU: props.nameRU,
+        nameEN: props.nameEN,
+        thumbnail: props.thumbnail,
+        movieId: String(props.movieId),
+      };
+      return fetch(`${this._baseUrl}/movies`, {
         method: 'POST',
         headers: this._getHeaders(),
         credentials: 'include',
-        body: JSON.stringify({
-          name: cardData.name,
-          link: cardData.link,
-        })
+        body: JSON.stringify(bodyReq)
       })
       .then(this._getJson);
     }
-  
-    deleteCard(cardId) {
-      return fetch(`${this._baseUrl}/cards/${cardId}`, {
+
+    dislikeMovie(id) {
+      return fetch(`${this._baseUrl}/movies/${id}`, {
         method: 'DELETE',
         headers: this._getHeaders(),
         credentials: 'include'
       })
       .then(this._getJson);
     }
-  
-    changeLikeCardStatus(cardId, isLiked) {
-      if (!isLiked) {
-        return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-          method: 'DELETE',
-          headers: this._getHeaders(),
-          credentials: 'include'
-        })
-        .then(this._getJson);
-      } else {
-        return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-          method: 'PUT',
-          headers: this._getHeaders(),
-          credentials: 'include'
-        })
-        .then(this._getJson);
-      }
-    }
-  
-    setUserAvatar(link) {
-      return fetch(`${this._baseUrl}/users/me/avatar`, {
-        method: 'PATCH',
-        headers: this._getHeaders(),
-        credentials: 'include',
-        body: JSON.stringify({
-          avatar: link
-        })
-      })
-      .then(this._getJson);
-    }
-  }
+}
   
   const BASE_URL = process.env.NODE_ENV === 'production' ? 'https://api.plyusnina.nomoreparties.sbs' : 'http://localhost:3000';
   

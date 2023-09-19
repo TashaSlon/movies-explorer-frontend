@@ -1,6 +1,4 @@
-
-const { BASE_URL } = require('./api');
-
+const { BASE_URL } = require("./MainApi");
 
 function getJson(res) {
   if (res.ok) {
@@ -9,15 +7,17 @@ function getJson(res) {
   return Promise.reject(`Ошибка: ${res.status}`);
 }
 
-export const register = (password, email) => {
+export const register = (name, email, password) => {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     credentials: 'include',
-    body: JSON.stringify({"password": password,
-    "email": email })
+    body: JSON.stringify({
+    "name": name,
+    "email": email,
+    "password": password, })
   })
   .then(getJson);
 };
@@ -38,18 +38,6 @@ export const authorize = (password, email) => {
 
 export const logout = () => {
   return fetch(`${BASE_URL}/signout`, {
-    headers: {
-      "Accept": "application/json",
-      "Content-Type": "application/json"
-    },
-    credentials: 'include',
-    method: 'GET'
-  })
-  .then(getJson);
-};
-
-export const getEmail = () => {
-  return fetch(`${BASE_URL}/users/me`, {
     headers: {
       "Accept": "application/json",
       "Content-Type": "application/json"

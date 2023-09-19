@@ -38,11 +38,14 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
 
     width: 100%;
-    height: 100vh;
+    height: 76vh;
+
+    padding-top: 144px;
+    padding-bottom: 46px;
 
     background-color: #202020;
 }
@@ -69,7 +72,7 @@
 }
 
 .header__btn {
-padding: 5px 12px;
+  padding: 5px 12px;
 
   background-color: #3DDC84;
   border-radius: 3px;
@@ -78,6 +81,8 @@ padding: 5px 12px;
   font-size: 10px;
   line-height: 160%;
   border: none;
+
+  cursor: pointer;
 }
 
 .header__account {
@@ -110,6 +115,8 @@ padding: 5px 12px;
     background-color: transparent;
     background-position: 0 -2px;
     border: none;
+
+    cursor: pointer;
 }
 
 .header__sidebar-link {
@@ -123,8 +130,6 @@ padding: 5px 12px;
 }
 
 .header__sidebar-account {
-    margin-top: 444px;
-    margin-bottom: 46px;
     padding: 8px 20px;
 
     border-radius: 20px;
@@ -136,6 +141,10 @@ padding: 5px 12px;
     font-weight: 500;
 }
 
+.header__nav-link {
+    color: #fff;
+}
+
 @media screen and (min-width: 768px) {
     .header {
         padding: 18px 30px;
@@ -143,6 +152,10 @@ padding: 5px 12px;
 
     .header__sidebar_active {
         width: 520px;
+
+        padding-top: 159px;
+        padding-bottom: 90px;
+
         border-left: 730px solid rgba(0, 0, 0, .5);
         -webkit-background-clip: padding-box; /* for Safari */
         background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
@@ -181,11 +194,6 @@ padding: 5px 12px;
 
     .header__sidebar-link {
         line-height: 140%;
-    }
-
-    .header__sidebar-account {
-        margin-top: 621px;
-        margin-bottom: 90px;
     }
 }
 

@@ -13,6 +13,17 @@
     font-size: 12px;
     font-weight: 500;
     
+    cursor: pointer;
+}
+
+.movies__zero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-top: 50px;
+
+    font-size: 14px;
 }
 
 @media screen and (min-width: 768px) {
