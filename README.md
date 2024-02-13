@@ -1,7 +1,10 @@
-# Project by Natalya Plyusnina
+# Project: Movies
 
-[GitHub repository](https://github.com/TashaSlon/movies-explorer-frontend) \
+[GitHub repository for frontend](https://github.com/TashaSlon/movies-explorer-frontend) \
+[GitHub repository for backend](https://github.com/TashaSlon/movies-explorer-api) \
 [Design - dark-2](https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/light-1?type=design&node-id=1-7266&mode=dev)
+
+This project was developed on ReactJS as a final work in Yandex.Practicum.
 
 ## Available Scripts
 
@@ -17,12 +20,6 @@ You may also see any lint errors in the console.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Builds the app for production to the `build` folder.
 
 
