@@ -1,4 +1,4 @@
-# Project: Movies
+# Project: Movies.Frontend
 
 [GitHub repository for frontend](https://github.com/TashaSlon/movies-explorer-frontend) \
 [GitHub repository for backend](https://github.com/TashaSlon/movies-explorer-api) \
